@@ -3,7 +3,7 @@ title: Alexis Mas
 description: 'Turning coffee into software since 2008'
 url: 'https://alexismas.com'
 baseurl: ''
-# google_analytics: 'UA-XXXXXX-X'
+google_analytics: UA-46113844-1
 disqus_shortname: alexismas
 
 author:
