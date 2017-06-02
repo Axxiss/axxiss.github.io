@@ -6,3 +6,7 @@
   background: none !important;
   border-bottom: none !important;
 }
+
+.landing .mobile {
+  display: none;
+}
