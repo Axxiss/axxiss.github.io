@@ -3,10 +3,7 @@ layout: post
 title: "Unit Testing with RxJava"
 date: 2015-05-20
 comments: true
-tags:
- - Java
- - ReactiveX
- - Testing
+tags: Java
 ---
 When we are testing our [RxJava][1] code we can distinguish three main subjects to be tested:
 
@@ -20,9 +17,9 @@ Testing an [Observable][2] is pretty simple: create the observable, subscribe an
 
 Subscribers
 -----------
-When it comes to [Subscribers][3] we can differentiate two scenarios: 
+When it comes to [Subscribers][3] we can differentiate two scenarios:
 
- 1. Named subscriber 
+ 1. Named subscriber
  2. Anonymous subscriber
 
 Despite both implementations carry out the same function, the way of testing each one is totally different. A named subscriber can be constructed directly on our test by doing `new MySubscriber()`. As that subscriber extends `Subscriber<T>` we can access its public methods: onCompleted, onError and onNext; because of that just instantiate a new subscriber, call each method and do the assertion/verification for each case.
@@ -80,7 +77,7 @@ public void registerSchedulersHook(RxJavaSchedulersHook impl) {
     }
 }
 ```
-That's the origin of the error we're seeing but if we keep looking we will find a package protected reset method that reset the current implementations of available hooks. 
+That's the origin of the error we're seeing but if we keep looking we will find a package protected reset method that reset the current implementations of available hooks.
 
 ``` java
 /* package accessible for unit tests */
