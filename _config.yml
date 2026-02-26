@@ -4,12 +4,10 @@ description: 'Turning coffee into software since 2008'
 url: 'https://alexismas.com'
 baseurl: ''
 google_analytics: UA-46113844-1
-disqus_shortname: alexismas
 
 author:
   name: 'Alexis Mas'
   email: hello@alexismas.com
-  twitter_username: _axxiss
   github_username:  Axxiss
   linkedin_username: alexis-mas
 
