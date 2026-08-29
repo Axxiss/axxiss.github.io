@@ -126,11 +126,11 @@ There is an [issue][9] on GitHub about making reset method public.
 
 
 [1]: https://github.com/ReactiveX/RxJava
-[2]: http://reactivex.io/RxJava/javadoc/rx/Observable.html
-[3]: http://reactivex.io/RxJava/javadoc/rx/Subscriber.html
-[4]: http://reactivex.io/RxJava/javadoc/rx/plugins/RxJavaSchedulersHook.html
-[5]: http://reactivex.io/RxJava/javadoc/rx/schedulers/Schedulers.html#immediate()
-[6]: http://reactivex.io/RxJava/javadoc/rx/plugins/RxJavaPlugins.html
-[7]: http://reactivex.io/RxJava/javadoc/rx/plugins/RxJavaObservableExecutionHook.html
+[2]: https://reactivex.io/RxJava/javadoc/rx/Observable.html
+[3]: https://reactivex.io/RxJava/javadoc/rx/Subscriber.html
+[4]: https://reactivex.io/RxJava/javadoc/rx/plugins/RxJavaSchedulersHook.html
+[5]: https://reactivex.io/RxJava/javadoc/rx/schedulers/Schedulers.html#immediate()
+[6]: https://reactivex.io/RxJava/javadoc/rx/plugins/RxJavaPlugins.html
+[7]: https://reactivex.io/RxJava/javadoc/rx/plugins/RxJavaObservableExecutionHook.html
 [8]: https://youtu.be/BKqtYkXIaG8
 [9]: https://github.com/ReactiveX/RxJava/issues/2297

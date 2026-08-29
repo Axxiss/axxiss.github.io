@@ -1,0 +1,37 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require 'html-proofer'
+
+SITE_DIR = '_site'
+
+abort("#{SITE_DIR} does not exist; build the site first") unless Dir.exist?(SITE_DIR)
+
+# Every option here is either a departure from the html-proofer defaults, or a
+# default we are leaning on and do not want changing under us on an upgrade.
+options = {
+  # The whole point: nothing here touches the network, so a red run always
+  # means we broke a link -- never that someone else's server was down.
+  disable_external: true,
+
+  # The default set. Images and Scripts cost nothing at this size and catch a
+  # renamed asset, which is what a template refactor actually breaks.
+  checks: %w[Links Images Scripts],
+
+  # A link to an anchor that does not exist is still a broken link.
+  check_internal_hash: true,
+
+  # Cheap to keep on now that every external link we have is https.
+  enforce_https: true,
+
+  # Resolves `/blog` (linked without a trailing slash in four places) to
+  # _site/blog/index.html. Reached only because typhoeus[:followlocation]
+  # defaults to true; if that is ever overridden, unslashed directory links
+  # start failing and will want trailing slashes.
+  directory_index_files: ['index.html']
+}
+
+# Only .html is parsed (the `extensions` default). feed.xml and sitemap.xml are
+# therefore not scanned for links, though they are still validated as link
+# *targets* -- html-proofer checks those with a plain File.exist?.
+HTMLProofer.check_directory(SITE_DIR, options).run

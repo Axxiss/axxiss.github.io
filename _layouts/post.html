@@ -3,8 +3,10 @@ layout: default
 ---
 <article class="post-container post-container--single">
   <header class="post-header">
+    <!-- Archive tags do not link: /blog/tags/ is built from site.tags, which
+         Jekyll populates from _posts only, never from a collection. -->
     <div class="post-meta">
-      <time datetime="{{ page.date | date: "%-d %b %Y" }}" class="post-meta__date date">{{ page.date | date: "%-d %b %Y" }}</time> &#8226; <span class="post-meta__tags">on {% for tag in page.tags %}<a href="{{ '/blog/tags/' | relative_url }}#{{ tag }}">{{ tag }}</a> {% endfor %}</span>
+      <time datetime="{{ page.date | date: "%-d %b %Y" }}" class="post-meta__date date">{{ page.date | date: "%-d %b %Y" }}</time> &#8226; <span class="post-meta__tags">on {% for tag in page.tags %}{% if page.collection == 'archive' %}<span class="tag">{{ tag }}</span>{% else %}<a href="{{ '/blog/tags/' | relative_url }}#{{ tag }}">{{ tag }}</a>{% endif %} {% endfor %}</span>
     </div>
     <h1 class="post-title">{{ page.title }}</h1>
   </header>

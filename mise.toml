@@ -3,3 +3,15 @@
 # idiomatic version files are opt-in per tool and default to off.
 [settings]
 idiomatic_version_file_enable_tools = ["ruby"]
+
+[tasks.build]
+description = "Build the site into _site/"
+# Match .github/workflows/pages.yml: footer.html branches on jekyll.environment,
+# so a development build would check HTML that never deploys.
+env = { JEKYLL_ENV = "production" }
+run = "bundle exec jekyll build"
+
+[tasks.check-links]
+description = "Build the site and check every internal link, asset and anchor"
+depends = ["build"]
+run = "bundle exec ruby bin/check-links"

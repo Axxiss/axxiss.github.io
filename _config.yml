@@ -43,4 +43,4 @@ kramdown:
   hard_wrap: false
 
 plugins: ['jekyll-paginate']
-exclude: ['README.md', 'Gemfile', 'Gemfile.lock', 'mise.toml', '.ruby-version', 'vendor', 'screenshot.png']
+exclude: ['README.md', 'Gemfile', 'Gemfile.lock', 'bin', 'mise.toml', '.ruby-version', 'vendor', 'screenshot.png']
