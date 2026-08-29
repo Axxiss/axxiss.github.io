@@ -5,7 +5,8 @@ permalink: /cv/
 description: 'CV of Alexis Mas — Senior Infrastructure Engineer. Kubernetes (EKS), AWS, Terraform, Pulumi, ArgoCD, Datadog, incident response and developer tooling.'
 ---
 
-**Senior Infrastructure Engineer** · Valencia, Spain · Remote (CET, full EMEA overlap)
+**Senior Infrastructure Engineer** · Valencia, Spain · Remote (CET · full EMEA overlap ·
+afternoon overlap with the US East Coast)
 
 [hello@alexismas.com](mailto:hello@alexismas.com) ·
 [LinkedIn](https://www.linkedin.com/in/alexis-mas) ·
@@ -18,16 +19,16 @@ build internal developer tooling as a product: requirements gathered from the en
 use it, then documented and driven to adoption through workshops, written guides, screencasts
 and conference talks.
 
-Six years fully remote in small, autonomous, async teams, most recently as the sole platform
-engineer on a multi-terabyte data platform. Currently focused on AI-assisted infrastructure
-work: agent-ready development environments, tight feedback loops, and automating recurring
-operational toil.
+Six years fully remote in small, autonomous, async teams, all of it with US companies and
+colleagues on both coasts, most recently as the sole platform engineer on a multi-terabyte
+data platform. Currently focused on AI-assisted infrastructure work: agent-ready
+development environments, tight feedback loops, and automating recurring operational toil.
 
 ## Experience
 
 ### Coinwatch — Senior Software Engineer, Infrastructure
 
-*Nov 2025 – Present · Remote (Spain) · Contract*
+*Nov 2025 – Present · Remote (Spain) · Contract · US company*
 
 AWS (ECS, EC2, Aurora/RDS, S3, ECR, SSM, VPC) · Pulumi (TypeScript) · Datadog · Ruby on Rails
 · Sidekiq · Docker · CodePipeline/CodeBuild · Cloudflare
@@ -54,13 +55,14 @@ ingestion from exchanges and on-chain sources.
 
 ### Wellfound — Senior Software Engineer, Cloud Infrastructure
 
-*Jan 2020 – Oct 2025 · Remote (Germany / Spain)*
+*Jan 2020 – Oct 2025 · Remote (Germany / Spain) · US company*
 
 Kubernetes (EKS) · Terraform · AWS · ArgoCD · Helm · Datadog · Cloudflare · Buildkite ·
 Docker · Ruby on Rails · GraphQL · Elasticsearch · Redis · MySQL · Postgres · Python / Dagster
 
-One of **two infrastructure engineers supporting 20+ product engineers**, owning reliability,
-scalability and delivery pipelines for a platform serving 3M+ monthly visitors.
+One of **two infrastructure engineers supporting 20+ product engineers** across US and
+European time zones, owning reliability, scalability and delivery pipelines for a platform
+serving 3M+ monthly visitors.
 
 - Operated and upgraded **3 production EKS clusters**, plus Ruby, Rails and Elasticsearch,
   **without downtime**; managed cluster dependencies and release lifecycle with Helm.
@@ -110,10 +112,10 @@ gateway while designing and building its GraphQL successor.
 
 ### WyeWorks — Software Engineer
 
-*May 2015 – Nov 2016 · Uruguay*
+*May 2015 – Nov 2016 · Uruguay · US-based clients*
 
-- Built Rails-based web applications for startups, focused on clean architecture and
-  performance.
+- Built Rails-based web applications for US-based startups, focused on clean architecture
+  and performance.
 
 ### Earlier
 
