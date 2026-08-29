@@ -1,0 +1,95 @@
+/* ===========================================================================
+   Syntax highlighting — Rouge token classes.
+
+   Built from the palette variables so code blocks sit in the same colour
+   system as everything around them: ochre keywords, laurel-tinted strings,
+   navy field. Every token clears WCAG AA against --syn-bg.
+   =========================================================================== */
+
+/* kramdown emits div.highlighter-rouge > div.highlight > pre.highlight, so
+   both the wrapper div and the pre carry class="highlight". Paint the div
+   only — painting both doubles the background and leaves a visible seam at
+   the edge of `.post pre { width: 95% }`. */
+div.highlight {
+  background-color: var(--syn-bg);
+  color: var(--syn-fg);
+  border: 1px solid var(--syn-border);
+  border-radius: 3px;
+}
+
+/* comments */
+.highlight .c,
+.highlight .cm,
+.highlight .cp,
+.highlight .c1,
+.highlight .cs,
+.highlight .gu  { color: var(--syn-comment); font-style: italic; }
+
+/* keywords */
+.highlight .k,
+.highlight .kc,
+.highlight .kd,
+.highlight .kn,
+.highlight .kp,
+.highlight .kr,
+.highlight .kt,
+.highlight .ow  { color: var(--syn-keyword); }
+
+/* strings and literals */
+.highlight .l,
+.highlight .ld,
+.highlight .s,
+.highlight .sb,
+.highlight .sc,
+.highlight .sd,
+.highlight .s2,
+.highlight .sh,
+.highlight .si,
+.highlight .sx,
+.highlight .sr,
+.highlight .s1,
+.highlight .ss  { color: var(--syn-string); }
+
+/* numbers and escapes */
+.highlight .m,
+.highlight .mf,
+.highlight .mh,
+.highlight .mi,
+.highlight .mo,
+.highlight .il,
+.highlight .se  { color: var(--syn-number); }
+
+/* names that read as declarations */
+.highlight .na  { color: var(--syn-attr); }
+.highlight .nc,
+.highlight .nd,
+.highlight .ne,
+.highlight .nf,
+.highlight .nx,
+.highlight .nt,
+.highlight .no  { color: var(--syn-name); }
+
+/* plain names, variables, punctuation */
+.highlight .n,
+.highlight .nb,
+.highlight .ni,
+.highlight .nl,
+.highlight .nn,
+.highlight .py,
+.highlight .nv,
+.highlight .bp,
+.highlight .vc,
+.highlight .vg,
+.highlight .vi,
+.highlight .w   { color: var(--syn-fg); }
+
+.highlight .o,
+.highlight .p   { color: var(--syn-punct); }
+
+/* generic / diff */
+.highlight .ge  { font-style: italic; }
+.highlight .gs  { font-weight: bold; }
+.highlight .gd  { color: var(--syn-removed); }
+.highlight .gi  { color: var(--syn-added); }
+
+.highlight .err { color: var(--syn-error); background-color: var(--syn-error-bg); }

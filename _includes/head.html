@@ -10,7 +10,7 @@
   {% endif %}
   {% assign page_description = page.description | default: page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 200 %}
   {% assign page_url = page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url %}
-  {% assign page_image = page.image | default: '/images/cover.jpg' | prepend: site.baseurl | prepend: site.url %}
+  {% assign page_image = page.image | default: '/images/profile.jpg' | prepend: site.baseurl | prepend: site.url %}
 
   <title>{{ page_title }}</title>
   <meta name="description" content="{{ page_description }}">
@@ -20,7 +20,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="{{ page_title }}">
   <meta name="twitter:description" content="{{ page_description }}">
   <meta name="twitter:image" content="{{ page_image }}">
@@ -49,10 +49,19 @@
   <link rel="icon" type="image/png" href="/images/favicons/favicon-16x16.png" sizes="16x16">
   <link rel="manifest" href="/images/favicons/manifest.json">
   <link rel="shortcut icon" href="/images/favicons/favicon.ico">
-  <meta name="msapplication-TileColor" content="#ffc40d">
+  <meta name="msapplication-TileColor" content="#12326b">
   <meta name="msapplication-TileImage" content="/images/favicons/mstile-144x144.png">
-  <meta name="theme-color" content="#ffffff">
+  <meta name="theme-color" content="#12326b">
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&amp;family=Roboto+Slab:wght@300;400&amp;display=swap">
+
+  <!-- Cascade order. main.css is last so its overrides win. -->
+  <link rel="stylesheet" href="/css/palette.css">
+  <link rel="stylesheet" href="/css/animate.css">
+  <link rel="stylesheet" href="/css/uno.css">
+  <link rel="stylesheet" href="/css/syntax.css">
   <link rel="stylesheet" href="/css/main.css">
   <link rel="canonical" href="{{ page_url }}">
   <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ site.baseurl }}feed.xml">

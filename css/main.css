@@ -1,7 +1,9 @@
-@import url(uno.css);
-@import url(monokai.css);
-
-/* Modifications */
+/* ---------------------------------------------------------------------------
+   Local overrides on top of uno.css. Load order is set by the <link> tags in
+   _includes/head.html — palette, then uno, then syntax, then this file last so
+   these rules win. No literal colour values here; everything routes through
+   palette.css.
+   ------------------------------------------------------------------------ */
 
 pre.highlight,
 .highlight pre {
@@ -24,17 +26,26 @@ pre.highlight code,
   padding: 10px;
 }
 
+/* Tag and category pills, in the laurel green of the coat-of-arms branches. */
 .categories a,
-.tags a {
-  border: 1px solid #e25440;
+.tags a,
+.post-meta__tags a {
+  border: 1px solid var(--secondary);
   border-radius: 20px;
-  color: #e25440;
+  color: var(--secondary);
   display: inline-block;
   font-size: 12px;
-  margin: 5px 0;
+  margin: 5px 3px 5px 0;
   padding: 5px 10px;
   text-shadow: none;
   white-space: nowrap;
+}
+
+.categories a:hover,
+.tags a:hover,
+.post-meta__tags a:hover {
+  background: var(--secondary);
+  color: var(--on-secondary);
 }
 
 .post-meta__tags {
@@ -51,7 +62,7 @@ pre.highlight code,
   position: relative;
   width: 100px;
   height: 100px;
-  border: 3px solid #fff;
+  border: 3px solid var(--panel-image-border);
   border-radius:100%;
 }
 
@@ -66,4 +77,23 @@ pre.highlight code,
 .post li {
   margin-bottom: .6em;
   line-height: 1.7em;
+}
+
+/* An ochre hairline under body links, shifting to laurel green on hover.
+   The accent is a rule and never the link text — see palette.css for why. */
+.post p a,
+.post li a {
+  box-shadow: inset 0 -1px 0 var(--accent);
+}
+
+.post p a:hover,
+.post li a:hover {
+  box-shadow: inset 0 -1px 0 var(--secondary);
+}
+
+/* Section headings get a short ochre lead-in rule rather than loud colour.
+   .post also wraps the home page (index.html), so this rules those too. */
+.post h2 {
+  padding-top: .35em;
+  border-top: 3px solid var(--accent);
 }
