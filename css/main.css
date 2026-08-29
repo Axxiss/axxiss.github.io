@@ -1,6 +1,5 @@
 @import url(uno.css);
 @import url(monokai.css);
-@import url(landing.css);
 
 /* Modifications */
 
@@ -54,4 +53,17 @@ pre.highlight code,
   height: 100px;
   border: 3px solid #fff;
   border-radius:100%;
+}
+
+/* The reset zeroes ul/ol padding but uno.css sets list-style-type: disc,
+   so markers hang outside the text column. Scoped to article content. */
+.post ul,
+.post ol {
+  margin: 0 0 1.3em;
+  padding-left: 1.4em;
+}
+
+.post li {
+  margin-bottom: .6em;
+  line-height: 1.7em;
 }

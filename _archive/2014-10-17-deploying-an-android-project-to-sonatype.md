@@ -1,5 +1,6 @@
 ---
 layout: post
+permalink: /blog/2014/10/17/deploying-an-android-project-to-sonatype/
 title: "Deploying an Android project to Sonatype Nexus"
 date: 2014-10-17 21:20:00 -0200
 comments: true
