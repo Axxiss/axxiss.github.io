@@ -53,4 +53,12 @@ sitemap:
     </url>
     {% endunless %}
   {% endfor %}
+  {% for doc in site.archive %}
+    <url>
+      <loc>{{ site.url }}{{ doc.url }}</loc>
+      <lastmod>{{ doc.date | date_to_xmlschema }}</lastmod>
+      <changefreq>yearly</changefreq>
+      <priority>0.3</priority>
+    </url>
+  {% endfor %}
 </urlset>

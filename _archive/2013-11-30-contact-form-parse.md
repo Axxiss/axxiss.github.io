@@ -1,5 +1,6 @@
 ---
 layout: post
+permalink: /blog/2013/11/30/contact-form-parse/
 title: Contact form backed by Parse
 date: 2013-11-30
 comments: true

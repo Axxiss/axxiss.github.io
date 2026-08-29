@@ -1,3 +1,62 @@
 ---
-layout: landing
+layout: default
 ---
+<article class="post-container post-container--single">
+  <section class="post">
+
+    <p class="intro">I'm an infrastructure and platform engineer in Valencia, Spain. I keep production systems running: Kubernetes on AWS, the pipelines that deploy to them, the observability that says when they're unhappy, and the bill at the end of the month.</p>
+
+    <p>I've been writing software since 2008 and doing infrastructure for most of the last decade. These days I work as a fractional platform engineer, contracting for US companies in financial services. Before that I spent nearly six years at Wellfound, a US company, where two of us owned reliability, scalability and delivery for a product serving 3M+ monthly visitors and 20+ product engineers.</p>
+
+    <p>The part I care about isn't the infrastructure itself — it's making it usable by the engineers who depend on it. Most of my best work has been internal tooling treated as a product: requirements gathered from the people who'll actually use it, then documented and driven to adoption through guides, screencasts and workshops.</p>
+
+    <h2>What I work on</h2>
+
+    <ul>
+      <li><strong>Production Kubernetes and AWS.</strong> Operated and upgraded three production EKS clusters without downtime, with everything underneath managed in Terraform or Pulumi.</li>
+      <li><strong>Reliability and incident response.</strong> On-call rotations, runbooks, postmortems — and the unglamorous follow-up work that stops the same incident happening twice.</li>
+      <li><strong>Delivery.</strong> GitOps with ArgoCD, canary deployments, and CI that finishes before you've lost your train of thought.</li>
+      <li><strong>Cloud cost.</strong> Which, more often than not, turns out to be the same work as performance.</li>
+      <li><strong>Developer tooling, built as a product.</strong> Shipped because someone needed it, documented well enough to adopt without me in the room.</li>
+      <li><strong>AI-assisted infrastructure work.</strong> Currently: agent-ready development environments, tight feedback loops, and automating recurring operational toil.</li>
+    </ul>
+
+    <h2>Selected work</h2>
+
+    <ul>
+      <li><strong>A GraphQL gateway that became core infrastructure.</strong> Designed and built a new API gateway in Scala at New Work SE, learning Scala and GraphQL on the job. Adopted across multiple product teams — 100+ engineers — while the legacy Rails REST gateway kept serving 10k+ req/s so teams could migrate at their own pace.</li>
+      <li><strong>Rollback measured in seconds instead of hours.</strong> The data team's Dagster pipeline rebuilt a ~1TB Elasticsearch index over several hours, and a bad run meant a 4h+ snapshot restore. Cloning the index up front and repointing the alias on failure took recovery down to seconds — so the team could ship changes without risking a corrupted production index.</li>
+      <li><strong>A third of the database bill, traced to a handful of query patterns.</strong> Composite indexes and aggregate rewrites took the worst case from four hours to twenty seconds.</li>
+      <li><strong>Incidents from monthly to a few a year.</strong> Caching strategy, read/write splitting and resource tuning, backed by runbooks and postmortems that made the next one shorter.</li>
+      <li><strong>Coding agents with a smaller blast radius.</strong> A devcontainer-based environment that lets AI agents run autonomously against the platform, with tight feedback loops and documentation written for them. Now part of day-to-day delivery.</li>
+    </ul>
+
+    <p>More detail on the <a href="/cv/">CV</a>, and some background on the <a href="/about/">about page</a>.</p>
+
+    <h2>Writing</h2>
+
+    {% if site.posts.size > 0 %}
+    <ul>
+      {% for post in site.posts limit: 3 %}
+      <li>
+        <a href="{{ post.url }}">{{ post.title }}</a>
+        <span class="date">— {{ post.date | date: "%-d %b %Y" }}</span>
+      </li>
+      {% endfor %}
+    </ul>
+    <p><a href="/blog">All writing</a> · <a href="/feed.xml">RSS</a></p>
+    {% else %}
+    <p>Nothing here yet — I'm starting again, and this time in shorter pieces. Mostly notes from infrastructure work: what broke, what it cost, and what I'd do differently. <a href="/feed.xml">RSS</a> if you'd like them as they land.</p>
+    <p>There's also an <a href="/archive/">archive</a> of older posts from a previous, more mobile-shaped career.</p>
+    {% endif %}
+
+    <h2>Elsewhere</h2>
+
+    <ul>
+      <li><a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a></li>
+      <li><a href="https://github.com/{{ site.author.github_username }}" rel="me">GitHub</a></li>
+      <li><a href="https://www.linkedin.com/in/{{ site.author.linkedin_username }}" rel="me">LinkedIn</a></li>
+    </ul>
+
+  </section>
+</article>

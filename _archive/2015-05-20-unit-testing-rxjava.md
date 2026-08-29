@@ -1,5 +1,6 @@
 ---
 layout: post
+permalink: /blog/2015/05/20/unit-testing-rxjava/
 title: "Unit Testing with RxJava"
 date: 2015-05-20
 comments: true

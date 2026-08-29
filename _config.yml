@@ -1,6 +1,7 @@
 # Site settings
 title: Alexis Mas
-description: 'Turning coffee into software since 2008'
+tagline: 'Infrastructure & platform engineering'
+description: 'Alexis Mas — infrastructure and platform engineer in Valencia, Spain. Kubernetes on AWS, Terraform and Pulumi, observability, and developer tooling.'
 url: 'https://alexismas.com'
 baseurl: ''
 google_analytics: UA-46113844-1
@@ -10,6 +11,10 @@ author:
   email: hello@alexismas.com
   github_username:  Axxiss
   linkedin_username: alexis-mas
+
+collections:
+  archive:
+    output: true
 
 defaults:
   -

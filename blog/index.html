@@ -1,24 +1,51 @@
 ---
 layout: default
+title: Writing
+description: 'Notes on infrastructure and platform engineering by Alexis Mas — Kubernetes, AWS, reliability, cost and developer tooling.'
 ---
 
-<div class="main-post-list">
+<article class="post-container post-container--single">
 
-  <ol class="post-list">
-    {% for post in paginator.posts %}
-      <li>
-        <h2 class="post-list__post-title post-title"><a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></h2>
-        <p class="excerpt">{{ post.excerpt | remove: '<p>' | remove: '</p>' }}&hellip;</p>
-        <div class="post-list__meta"><time datetime="{{ post.date | date: "%-d %b %Y" }}" class="post-list__meta--date date">{{ post.date | date: "%-d %b %Y" }}</time> &#8226; <span class="post-meta__tags">on {% for tag in post.tags %}<a href="{{ site.baseurl }}tags/#{{ tag }}">{{ tag }}</a> {% endfor %}</span></div>
-        <hr class="post-list__divider">
-      </li>
-    {% endfor %}
-  </ol>
+  <header class="post-header">
+    <h1 class="post-title">Writing</h1>
+  </header>
 
-  <hr class="post-list__divider ">
+  {% if paginator.posts.size > 0 %}
 
-  {% if paginator.previous_page or paginator.next_page %}
-      {% include pagination.html %}
+  <div class="main-post-list">
+    <ol class="post-list">
+      {% for post in paginator.posts %}
+        <li>
+          <h2 class="post-list__post-title post-title"><a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></h2>
+          <p class="excerpt">{{ post.excerpt | remove: '<p>' | remove: '</p>' }}&hellip;</p>
+          <div class="post-list__meta"><time datetime="{{ post.date | date: "%-d %b %Y" }}" class="post-list__meta--date date">{{ post.date | date: "%-d %b %Y" }}</time> &#8226; <span class="post-meta__tags">on {% for tag in post.tags %}<a href="{{ site.baseurl }}tags/#{{ tag }}">{{ tag }}</a> {% endfor %}</span></div>
+          <hr class="post-list__divider">
+        </li>
+      {% endfor %}
+    </ol>
+
+    <hr class="post-list__divider ">
+
+    {% if paginator.previous_page or paginator.next_page %}
+        {% include pagination.html %}
+    {% endif %}
+  </div>
+
+  {% else %}
+
+  <section class="post">
+    <p>Nothing here yet.</p>
+
+    <p>I'm picking this back up after a long gap, in shorter pieces than before — notes from
+    infrastructure work rather than tutorials. What broke, what it cost, and what I'd do
+    differently.</p>
+
+    <p><a href="/feed.xml">Subscribe by RSS</a> if you'd like them as they land.</p>
+
+    <p>Older posts from a previous, more mobile-shaped career are in the
+    <a href="/archive/">archive</a>.</p>
+  </section>
+
   {% endif %}
 
-</div>
+</article>
