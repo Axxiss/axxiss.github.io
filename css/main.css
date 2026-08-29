@@ -1,7 +1,17 @@
-@import url(uno.css);
-@import url(monokai.css);
+/* ===========================================================================
+   Entry point. Load order matters: the palette defines the custom properties
+   that the other two stylesheets consume.
+   =========================================================================== */
 
-/* Modifications */
+@import url(palette.css);
+@import url(uno.css);
+@import url(syntax.css);
+
+/* ---- Modifications -------------------------------------------------------
+
+   Local overrides on top of the vendored Jekyll-Uno theme. No literal colour
+   values here either — everything routes through palette.css.
+   ------------------------------------------------------------------------ */
 
 pre.highlight,
 .highlight pre {
@@ -24,17 +34,28 @@ pre.highlight code,
   padding: 10px;
 }
 
+/* Tag and category pills, in the laurel green of the coat-of-arms branches. */
 .categories a,
-.tags a {
-  border: 1px solid #e25440;
+.tags a,
+.post-meta__tags a {
+  background: var(--tag-bg);
+  border: 1px solid var(--tag-border);
   border-radius: 20px;
-  color: #e25440;
+  color: var(--tag-text);
   display: inline-block;
   font-size: 12px;
-  margin: 5px 0;
+  margin: 5px 3px 5px 0;
   padding: 5px 10px;
   text-shadow: none;
   white-space: nowrap;
+}
+
+.categories a:hover,
+.tags a:hover,
+.post-meta__tags a:hover {
+  background: var(--tag-bg-hover);
+  border-color: var(--tag-border-hover);
+  color: var(--tag-text-hover);
 }
 
 .post-meta__tags {
@@ -51,7 +72,7 @@ pre.highlight code,
   position: relative;
   width: 100px;
   height: 100px;
-  border: 3px solid #fff;
+  border: 3px solid var(--panel-image-border);
   border-radius:100%;
 }
 
@@ -66,4 +87,24 @@ pre.highlight code,
 .post li {
   margin-bottom: .6em;
   line-height: 1.7em;
+}
+
+/* An ochre hairline under body links, shifting to laurel green on hover.
+   #FCD116 is 1.5:1 on white and #E0A800 is 2.1:1, so neither can be link
+   text — as a rule beneath navy text, the accent reads without carrying
+   any of the legibility load. Buttons opt out; they have their own fill. */
+.post p a:not(.btn),
+.post li a:not(.btn) {
+  box-shadow: inset 0 -1px 0 var(--accent);
+}
+
+.post p a:not(.btn):hover,
+.post li a:not(.btn):hover {
+  box-shadow: inset 0 -1px 0 var(--secondary);
+}
+
+/* Section headings get a short ochre lead-in rule rather than loud colour. */
+.post h2 {
+  padding-top: .35em;
+  border-top: 3px solid var(--accent);
 }

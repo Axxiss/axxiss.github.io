@@ -1,0 +1,126 @@
+/* ===========================================================================
+   Palette — "Coat of Arms"
+
+   Uruguayan colours, desaturated until they behave like a design system:
+   navy for text and headings, ochre where the flag's raw yellow would be
+   unusable, and the laurel green of the coat-of-arms branches on the tags.
+
+   The flag's hues are not fixed by Uruguayan law. The standard
+   representations are #0038A8 (blue), #FCD116 (Sun of May) and white; the
+   values below are derived from them, with two adjustments that contrast
+   forced:
+
+     - #FCD116 is 1.5:1 on white, so it can never be text. It becomes ochre
+       #E0A800 for rules and fills, and carries dark text (7.9:1) when used
+       as a background.
+     - #0038A8 is desaturated to navy #12326B, which reads as considered
+       rather than as a flag while still clearing 12:1 on the canvas.
+
+   Every text colour here clears WCAG AA (4.5:1) against the surface it sits
+   on. This is the only file in the project that contains colour values —
+   uno.css, main.css and syntax.css reference these and nothing else.
+   =========================================================================== */
+
+:root {
+  /* -- surfaces and text ------------------------------------------------- */
+  --bg:                     #fcfbf7;  /* warm off-white, not pure #fff       */
+  --text:                   #4a4f5c;  /* 7.9:1                               */
+  --strong:                 #12326b;  /* 12.0:1                              */
+  --heading:                #12326b;  /* 12.0:1                              */
+  --muted:                  #6d7381;  /* excerpts        4.6:1               */
+  --intro:                  #616978;  /* lede paragraph  5.3:1               */
+  --meta:                   #646a78;  /* dates, tags     5.2:1               */
+  --rule:                   #e3e0d6;
+  --selection:              #f3e3b4;
+
+  /* -- palette ----------------------------------------------------------- */
+  --link:                   #17458f;  /* 8.9:1                               */
+  --link-hover:             #2e6f4e;  /* laurel green    5.8:1               */
+  --accent:                 #e0a800;  /* ochre — rules and fills only        */
+  --accent-ink:             #231c05;  /* text on ochre   7.9:1               */
+  --secondary:              #2e6f4e;  /* laurel          5.8:1               */
+
+  /* -- inline code ------------------------------------------------------- */
+  --code-inline-bg:         #f3f0e6;
+  --code-inline-border:     #e1dccb;
+  --code-inline-text:       #12326b;
+
+  /* -- blockquote -------------------------------------------------------- */
+  --quote-bg:               #f6f4ec;
+  --quote-border:           #e6e2d5;
+  --quote-text:             #454b58;
+
+  /* -- footer ------------------------------------------------------------ */
+  --footer-rule:            #e3e0d6;
+  --footer-text:            #6d7381;
+  --footer-link:            #5e6472;
+
+  /* -- cover panel ------------------------------------------------------- */
+  --panel-bg:               #12326b;
+  --panel-title:            #ffffff;
+  --panel-text:             #ffffff;  /* 12.4:1 on --panel-bg                */
+  --panel-desc:             rgba(255, 255, 255, .84);
+  --panel-divider:          rgba(255, 255, 255, .18);
+  --panel-divider-accent:   rgba(224, 168, 0, .85);
+  --panel-image-border:     rgba(255, 255, 255, .85);
+  --panel-text-shadow:      0 1px 2px rgba(0, 10, 35, .4);
+
+  --panel-nav-border:       rgba(255, 255, 255, .55);
+  --panel-nav-text:         #ffffff;
+  --panel-nav-border-hover: #e0a800;
+  --panel-nav-text-hover:   #e0a800;
+  --panel-nav-bg-hover:     rgba(224, 168, 0, .12);
+
+  /* A plain navy gradient, lit from the top left. The cover panel carries no
+     image at all now — this replaced both the stripe motif and the old
+     /images/background-cover.jpg reference, which pointed at a missing file.
+     White clears 10:1 and the ochre nav hover 4.8:1 against the
+     lightest stop, so the whole panel holds AA regardless of height. */
+  --cover-image:   none;
+  --cover-overlay:
+    linear-gradient(140deg, #1a3f7d 0%, #12326b 55%, #0a1c40 100%);
+
+  /* -- buttons ----------------------------------------------------------- */
+  --btn-border:             #12326b;
+  --btn-text:               #12326b;
+  --btn-border-hover:       #e0a800;
+  --btn-text-hover:         #231c05;
+  --btn-bg-hover:           #e0a800;
+
+  --btn2-border:            #2e6f4e;
+  --btn2-text:              #2e6f4e;
+  --btn2-border-hover:      #2e6f4e;
+  --btn2-text-hover:        #ffffff;
+  --btn2-bg-hover:          #2e6f4e;
+
+  /* -- tag and category pills -------------------------------------------- */
+  --tag-border:             #2e6f4e;
+  --tag-bg:                 transparent;
+  --tag-text:               #2e6f4e;
+  --tag-border-hover:       #2e6f4e;
+  --tag-bg-hover:           #2e6f4e;
+  --tag-text-hover:         #ffffff;
+
+  /* -- mobile chrome ----------------------------------------------------- */
+  --mobile-bar-bg:          #12326b;
+  --mobile-bar-border:      rgba(224, 168, 0, .6);
+  --mobile-bar-icon:        #e0a800;
+  --mobile-nav-bg:          rgba(18, 50, 107, .98);
+  --mobile-nav-border:      rgba(224, 168, 0, .5);
+
+  /* -- syntax highlighting ----------------------------------------------- */
+  --syn-bg:                 #14243f;
+  --syn-border:             #22375a;
+  --syn-fg:                 #e7e5dc;  /* 12.3:1                              */
+  --syn-comment:            #808fa8;  /*  4.7:1                              */
+  --syn-keyword:            #e0a800;  /*  7.2:1                              */
+  --syn-string:             #7fb79a;  /*  6.8:1                              */
+  --syn-number:             #b8c9e8;
+  --syn-name:               #79a9da;  /*  6.3:1                              */
+  --syn-attr:               #a8c4e6;
+  --syn-punct:              #b0bcd0;
+  --syn-error:              #ffb4a2;
+  --syn-error-bg:           #3a1a18;
+  --syn-added:              #7fb79a;
+  --syn-removed:            #e59b8a;
+}
