@@ -26,7 +26,7 @@ development environments, tight feedback loops, and automating recurring operati
 
 ## Experience
 
-### Coinwatch — Senior Software Engineer, Infrastructure
+### [Coinwatch](https://coinwatch.co) — Senior Software Engineer, Infrastructure
 
 *Nov 2025 – Present · Remote (Spain) · Contract · US company*
 
@@ -53,7 +53,7 @@ ingestion from exchanges and on-chain sources.
 - Reduced web tail latency **75% (20s → 5s)** and halved Sidekiq infrastructure through
   instance-type and queue tuning.
 
-### Wellfound — Senior Software Engineer, Cloud Infrastructure
+### [Wellfound](https://wellfound.com) — Senior Software Engineer, Cloud Infrastructure
 
 *Jan 2020 – Oct 2025 · Remote (Germany / Spain) · US company*
 
@@ -86,7 +86,7 @@ serving 3M+ monthly visitors.
 - Drove **SOC 2 compliance**, getting the company attested in a couple of months vs. the
   typical 6–12 month timeline.
 
-### New Work SE — Senior Software Engineer, API Platform
+### [New Work SE](https://www.new-work.se/en/) — Senior Software Engineer, API Platform
 
 *Dec 2016 – Dec 2019 · Germany*
 
@@ -110,7 +110,7 @@ gateway while designing and building its GraphQL successor.
 - Maintained the legacy **Rails REST gateway serving 10k+ req/s** throughout the transition so
   teams could migrate at their own pace, and **migrated it to Kubernetes with zero downtime**.
 
-### WyeWorks — Software Engineer
+### [WyeWorks](https://www.wyeworks.com) — Software Engineer
 
 *May 2015 – Nov 2016 · Uruguay · US-based clients*
 
@@ -119,8 +119,9 @@ gateway while designing and building its GraphQL successor.
 
 ### Earlier
 
-**2008–2015:** Software Engineer at Scanntech, Holla@Me, Crambo and Universidad de Alcalá
-(mobile & web applications).
+**2008–2015:** Software Engineer at [Scanntech](https://www.scanntech.com),
+Holla@Me, [Crambo](https://www.crambo.es) and
+[Universidad de Alcalá](https://www.uah.es) (mobile & web applications).
 
 ## Technical skills
 
@@ -137,4 +138,4 @@ gateway while designing and building its GraphQL successor.
 
 ## Education
 
-**Universidad de Alcalá** — Bachelor of Engineering, Computer Science · 2005–2012 · Spain
+**[Universidad de Alcalá](https://www.uah.es)** — Bachelor of Engineering, Computer Science · 2005–2012 · Spain
