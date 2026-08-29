@@ -1,0 +1,5 @@
+# Ruby version lives in .ruby-version so mise and ruby/setup-ruby (CI)
+# read the same file. This setting is what makes mise read it at all --
+# idiomatic version files are opt-in per tool and default to off.
+[settings]
+idiomatic_version_file_enable_tools = ["ruby"]

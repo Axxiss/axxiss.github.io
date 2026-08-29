@@ -25,6 +25,10 @@ defaults:
         layout: 'post'
 
 # Build settings
+# Pinned so local builds match CI and the previous GitHub Pages builder,
+# both of which run in UTC. Without it a post dated 2014-10-17 21:20 -0200
+# renders under a different day (and URL) on a machine east of UTC.
+timezone: UTC
 destination: _site
 paginate: 10
 paginate_path: "/blog/page:num/"
@@ -38,5 +42,5 @@ kramdown:
   # do not replace newlines by <br>s
   hard_wrap: false
 
-gems: ['jekyll-paginate']
-exclude: ['README.md', 'Gemfile', 'Gemfile.lock', 'screenshot.png']
+plugins: ['jekyll-paginate']
+exclude: ['README.md', 'Gemfile', 'Gemfile.lock', 'mise.toml', '.ruby-version', 'vendor', 'screenshot.png']
