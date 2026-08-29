@@ -1,13 +1,9 @@
 /* ===========================================================================
    Syntax highlighting — Rouge token classes.
 
-   Replaces the Monokai theme, whose orange, pink and lime belonged to a
-   different site. Built from the palette variables so code blocks sit in the
-   same colour system as everything around them: ochre keywords, laurel-tinted
-   strings, navy field.
-
-   Every token clears WCAG AA against --syn-bg. Class list matches Rouge's
-   output, so nothing that used to be highlighted stops being highlighted.
+   Built from the palette variables so code blocks sit in the same colour
+   system as everything around them: ochre keywords, laurel-tinted strings,
+   navy field. Every token clears WCAG AA against --syn-bg.
    =========================================================================== */
 
 /* kramdown emits div.highlighter-rouge > div.highlight > pre.highlight, so
@@ -20,15 +16,6 @@ div.highlight {
   border: 1px solid var(--syn-border);
   border-radius: 3px;
 }
-
-pre.highlight,
-div.highlight pre {
-  background: none;
-  border: none;
-  color: inherit;
-}
-
-.highlight .hll { background-color: var(--syn-bg); }
 
 /* comments */
 .highlight .c,

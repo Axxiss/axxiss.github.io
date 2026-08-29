@@ -17,102 +17,124 @@
        rather than as a flag while still clearing 12:1 on the canvas.
 
    Every text colour here clears WCAG AA (4.5:1) against the surface it sits
-   on. This is the only file in the project that contains colour values —
-   uno.css, main.css and syntax.css reference these and nothing else.
+   on.
+
+   Two tiers: primitives hold the hues, roles name what each hue is *for*.
+   Stylesheets consume roles only — that indirection is what makes the site
+   re-themeable, so resist inlining a primitive at a use site.
+
+   This is the only STYLESHEET with colour values; uno.css, main.css and
+   syntax.css reference these tokens and nothing else. Three non-CSS surfaces
+   also carry the brand navy and have to be changed by hand alongside --navy,
+   because none of them can read a custom property:
+
+     - _includes/head.html          theme-color, msapplication-TileColor
+     - images/favicons/browserconfig.xml
+     - images/favicons/manifest.json    (also carries --paper)
    =========================================================================== */
 
 :root {
-  /* -- surfaces and text ------------------------------------------------- */
-  --bg:                     #fcfbf7;  /* warm off-white, not pure #fff       */
+  /* -- primitives: the only literal hues ---------------------------------- */
+  --navy:                   #12326b;
+  --laurel:                 #2e6f4e;
+  --ochre:                  #e0a800;
+  --paper:                  #fcfbf7;
+  --on-navy:                #ffffff;
+
+  /* Alpha variants of the primitives above. CSS cannot derive an rgba() from
+     a hex custom property without color-mix(), which fails closed on older
+     browsers (invalid value -> declaration dropped -> missing divider), so
+     these channel triplets are written out. Keep them in step with the
+     primitive named in each comment. */
+  --navy-a98:               rgba(18, 50, 107, .98);   /* --navy    */
+  --ochre-a85:              rgba(224, 168, 0, .85);   /* --ochre   */
+  --ochre-a60:              rgba(224, 168, 0, .6);    /* --ochre   */
+  --ochre-a50:              rgba(224, 168, 0, .5);    /* --ochre   */
+  --ochre-a12:              rgba(224, 168, 0, .12);   /* --ochre   */
+  --on-navy-a85:            rgba(255, 255, 255, .85); /* --on-navy */
+  --on-navy-a84:            rgba(255, 255, 255, .84); /* --on-navy */
+  --on-navy-a55:            rgba(255, 255, 255, .55); /* --on-navy */
+  --on-navy-a18:            rgba(255, 255, 255, .18); /* --on-navy */
+
+  /* -- surfaces and text -------------------------------------------------- */
+  --bg:                     var(--paper);  /* warm off-white, not pure #fff  */
   --text:                   #4a4f5c;  /* 7.9:1                               */
-  --strong:                 #12326b;  /* 12.0:1                              */
-  --heading:                #12326b;  /* 12.0:1                              */
+  --strong:                 var(--navy);   /* 12.0:1                         */
+  --heading:                var(--strong);
   --muted:                  #6d7381;  /* excerpts        4.6:1               */
   --intro:                  #616978;  /* lede paragraph  5.3:1               */
   --meta:                   #646a78;  /* dates, tags     5.2:1               */
   --rule:                   #e3e0d6;
   --selection:              #f3e3b4;
 
-  /* -- palette ----------------------------------------------------------- */
+  /* -- palette ------------------------------------------------------------ */
   --link:                   #17458f;  /* 8.9:1                               */
-  --link-hover:             #2e6f4e;  /* laurel green    5.8:1               */
-  --accent:                 #e0a800;  /* ochre — rules and fills only        */
+  --secondary:              var(--laurel);  /* laurel       5.8:1            */
+  --link-hover:             var(--secondary);
+  --accent:                 var(--ochre);   /* rules and fills only          */
   --accent-ink:             #231c05;  /* text on ochre   7.9:1               */
-  --secondary:              #2e6f4e;  /* laurel          5.8:1               */
+  --on-secondary:           var(--on-navy);  /* text on a laurel fill        */
 
-  /* -- inline code ------------------------------------------------------- */
+  /* -- inline code -------------------------------------------------------- */
   --code-inline-bg:         #f3f0e6;
   --code-inline-border:     #e1dccb;
-  --code-inline-text:       #12326b;
+  --code-inline-text:       var(--navy);
 
-  /* -- blockquote -------------------------------------------------------- */
+  /* -- blockquote --------------------------------------------------------- */
   --quote-bg:               #f6f4ec;
   --quote-border:           #e6e2d5;
   --quote-text:             #454b58;
 
-  /* -- footer ------------------------------------------------------------ */
-  --footer-rule:            #e3e0d6;
-  --footer-text:            #6d7381;
+  /* -- footer ------------------------------------------------------------- */
+  --footer-rule:            var(--rule);
+  --footer-text:            var(--muted);
   --footer-link:            #5e6472;
 
-  /* -- cover panel ------------------------------------------------------- */
-  --panel-bg:               #12326b;
-  --panel-title:            #ffffff;
-  --panel-text:             #ffffff;  /* 12.4:1 on --panel-bg                */
-  --panel-desc:             rgba(255, 255, 255, .84);
-  --panel-divider:          rgba(255, 255, 255, .18);
-  --panel-divider-accent:   rgba(224, 168, 0, .85);
-  --panel-image-border:     rgba(255, 255, 255, .85);
+  /* -- cover panel -------------------------------------------------------- */
+  --panel-bg:               var(--navy);
+  --panel-title:            var(--on-navy);
+  --panel-text:             var(--on-navy);  /* 12.4:1 on --panel-bg         */
+  --panel-desc:             var(--on-navy-a84);
+  --panel-divider:          var(--on-navy-a18);
+  --panel-divider-accent:   var(--ochre-a85);
+  --panel-image-border:     var(--on-navy-a85);
+  --panel-image-shadow:     0 0 1px 1px rgba(0, 0, 0, .3);
   --panel-text-shadow:      0 1px 2px rgba(0, 10, 35, .4);
 
-  --panel-nav-border:       rgba(255, 255, 255, .55);
-  --panel-nav-text:         #ffffff;
-  --panel-nav-border-hover: #e0a800;
-  --panel-nav-text-hover:   #e0a800;
-  --panel-nav-bg-hover:     rgba(224, 168, 0, .12);
+  --panel-nav-border:       var(--on-navy-a55);
+  --panel-nav-text:         var(--on-navy);
+  --panel-nav-border-hover: var(--accent);
+  --panel-nav-text-hover:   var(--accent);
+  --panel-nav-bg-hover:     var(--ochre-a12);
 
-  /* A plain navy gradient, lit from the top left. The cover panel carries no
-     image at all now — this replaced both the stripe motif and the old
-     /images/background-cover.jpg reference, which pointed at a missing file.
-     White clears 10:1 and the ochre nav hover 4.8:1 against the
+  /* A plain navy gradient, lit from the top left. The outer stops are hand-
+     mixed tints of --navy (no var() form without color-mix), so move them
+     with it. White clears 10:1 and the ochre nav hover 4.8:1 against the
      lightest stop, so the whole panel holds AA regardless of height. */
-  --cover-image:   none;
   --cover-overlay:
     linear-gradient(140deg, #1a3f7d 0%, #12326b 55%, #0a1c40 100%);
 
-  /* -- buttons ----------------------------------------------------------- */
-  --btn-border:             #12326b;
-  --btn-text:               #12326b;
-  --btn-border-hover:       #e0a800;
-  --btn-text-hover:         #231c05;
-  --btn-bg-hover:           #e0a800;
+  /* -- buttons ------------------------------------------------------------ */
+  --btn-border:             var(--navy);
+  --btn-text:               var(--navy);
+  --btn-border-hover:       var(--accent);
+  --btn-text-hover:         var(--accent-ink);
+  --btn-bg-hover:           var(--accent);
 
-  --btn2-border:            #2e6f4e;
-  --btn2-text:              #2e6f4e;
-  --btn2-border-hover:      #2e6f4e;
-  --btn2-text-hover:        #ffffff;
-  --btn2-bg-hover:          #2e6f4e;
+  /* -- mobile chrome ------------------------------------------------------ */
+  --mobile-bar-bg:          var(--navy);
+  --mobile-bar-border:      var(--ochre-a60);
+  --mobile-bar-icon:        var(--accent);
+  --mobile-nav-bg:          var(--navy-a98);
+  --mobile-nav-border:      var(--ochre-a50);
 
-  /* -- tag and category pills -------------------------------------------- */
-  --tag-border:             #2e6f4e;
-  --tag-bg:                 transparent;
-  --tag-text:               #2e6f4e;
-  --tag-border-hover:       #2e6f4e;
-  --tag-bg-hover:           #2e6f4e;
-  --tag-text-hover:         #ffffff;
-
-  /* -- mobile chrome ----------------------------------------------------- */
-  --mobile-bar-bg:          #12326b;
-  --mobile-bar-border:      rgba(224, 168, 0, .6);
-  --mobile-bar-icon:        #e0a800;
-  --mobile-nav-bg:          rgba(18, 50, 107, .98);
-  --mobile-nav-border:      rgba(224, 168, 0, .5);
-
-  /* -- syntax highlighting ----------------------------------------------- */
+  /* -- syntax highlighting ------------------------------------------------ */
   --syn-bg:                 #14243f;
   --syn-border:             #22375a;
   --syn-fg:                 #e7e5dc;  /* 12.3:1                              */
   --syn-comment:            #808fa8;  /*  4.7:1                              */
+  /* Same hue as --ochre, kept separate: it owes 7.2:1 against --syn-bg, not
+     against --bg, so the two must be free to move independently. */
   --syn-keyword:            #e0a800;  /*  7.2:1                              */
   --syn-string:             #7fb79a;  /*  6.8:1                              */
   --syn-number:             #b8c9e8;

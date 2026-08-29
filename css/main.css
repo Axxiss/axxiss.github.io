@@ -1,16 +1,8 @@
-/* ===========================================================================
-   Entry point. Load order matters: the palette defines the custom properties
-   that the other two stylesheets consume.
-   =========================================================================== */
-
-@import url(palette.css);
-@import url(uno.css);
-@import url(syntax.css);
-
-/* ---- Modifications -------------------------------------------------------
-
-   Local overrides on top of the vendored Jekyll-Uno theme. No literal colour
-   values here either — everything routes through palette.css.
+/* ---------------------------------------------------------------------------
+   Local overrides on top of uno.css. Load order is set by the <link> tags in
+   _includes/head.html — palette, then uno, then syntax, then this file last so
+   these rules win. No literal colour values here; everything routes through
+   palette.css.
    ------------------------------------------------------------------------ */
 
 pre.highlight,
@@ -38,10 +30,9 @@ pre.highlight code,
 .categories a,
 .tags a,
 .post-meta__tags a {
-  background: var(--tag-bg);
-  border: 1px solid var(--tag-border);
+  border: 1px solid var(--secondary);
   border-radius: 20px;
-  color: var(--tag-text);
+  color: var(--secondary);
   display: inline-block;
   font-size: 12px;
   margin: 5px 3px 5px 0;
@@ -53,9 +44,8 @@ pre.highlight code,
 .categories a:hover,
 .tags a:hover,
 .post-meta__tags a:hover {
-  background: var(--tag-bg-hover);
-  border-color: var(--tag-border-hover);
-  color: var(--tag-text-hover);
+  background: var(--secondary);
+  color: var(--on-secondary);
 }
 
 .post-meta__tags {
@@ -90,20 +80,19 @@ pre.highlight code,
 }
 
 /* An ochre hairline under body links, shifting to laurel green on hover.
-   #FCD116 is 1.5:1 on white and #E0A800 is 2.1:1, so neither can be link
-   text — as a rule beneath navy text, the accent reads without carrying
-   any of the legibility load. Buttons opt out; they have their own fill. */
-.post p a:not(.btn),
-.post li a:not(.btn) {
+   The accent is a rule and never the link text — see palette.css for why. */
+.post p a,
+.post li a {
   box-shadow: inset 0 -1px 0 var(--accent);
 }
 
-.post p a:not(.btn):hover,
-.post li a:not(.btn):hover {
+.post p a:hover,
+.post li a:hover {
   box-shadow: inset 0 -1px 0 var(--secondary);
 }
 
-/* Section headings get a short ochre lead-in rule rather than loud colour. */
+/* Section headings get a short ochre lead-in rule rather than loud colour.
+   .post also wraps the home page (index.html), so this rules those too. */
 .post h2 {
   padding-top: .35em;
   border-top: 3px solid var(--accent);
