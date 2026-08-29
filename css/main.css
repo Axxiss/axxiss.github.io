@@ -29,7 +29,8 @@ pre.highlight code,
 /* Tag and category pills, in the laurel green of the coat-of-arms branches. */
 .categories a,
 .tags a,
-.post-meta__tags a {
+.post-meta__tags a,
+.post-meta__tags .tag {
   border: 1px solid var(--secondary);
   border-radius: 20px;
   color: var(--secondary);

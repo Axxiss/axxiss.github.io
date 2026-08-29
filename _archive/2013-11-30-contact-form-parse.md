@@ -128,4 +128,4 @@ That's it.
 
 [1]: https://mailgun.com/
 [2]: https://parse.com/
-[3]: http://en.wikipedia.org/wiki/Backend_as_a_service
+[3]: https://en.wikipedia.org/wiki/Backend_as_a_service
