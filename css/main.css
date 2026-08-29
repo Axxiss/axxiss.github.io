@@ -91,6 +91,17 @@ pre.highlight code,
   box-shadow: inset 0 -1px 0 var(--secondary);
 }
 
+/* Company names in the CV are links inside headings. They keep the heading's
+   navy so the page reads unchanged, and reveal the ochre hairline on hover. */
+.post h3 a,
+.post h3 a:hover {
+  color: inherit;
+}
+
+.post h3 a:hover {
+  box-shadow: inset 0 -1px 0 var(--accent);
+}
+
 /* Section headings get a short ochre lead-in rule rather than loud colour.
    .post also wraps the home page (index.html), so this rules those too. */
 .post h2 {
