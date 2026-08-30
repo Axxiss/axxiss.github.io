@@ -3,7 +3,6 @@ layout: post
 permalink: /blog/2014/10/17/deploying-an-android-project-to-sonatype/
 title: "Deploying an Android project to Sonatype Nexus"
 date: 2014-10-17 21:20:00 -0200
-comments: true
 tags: Android
 ---
 When we try to deploy an Android to Sonatype Nexus using [Gradle Sonatype Nexus][1] plugin, we will encounter (at least in my case) two errors.
