@@ -58,6 +58,30 @@ pre.highlight code,
     margin: 0 20px 10px;
 }
 
+/* A quiet aside closing a section. Deliberately unscoped: the blog index uses
+   it directly under the page title, outside any .post. */
+.note {
+  font-size: .85em;
+  color: var(--muted);
+}
+
+/* The AI-disclosure line under the copyright. uno.css scopes the footer's
+   margins and link colours to .footer__copyright, so a sibling has to restate
+   them; size and muted colour it inherits from .footer. */
+.footer__note {
+    display: block;
+    margin: 0 20px 10px;
+}
+
+.footer__note a {
+    color: var(--footer-link);
+    text-decoration: underline;
+}
+
+.footer__note a:hover {
+    color: var(--link-hover);
+}
+
 .user-image {
   margin-bottom: 1.2em;
   position: relative;
