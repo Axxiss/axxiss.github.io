@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "The dusty mini-PC gets a job: Remote AI agent"
+title: "Hiring the dusty mini-PC to run my AI agents"
 date: 2026-08-30
 tags: [AI, Tooling]
 ---
@@ -57,4 +57,4 @@ If we look at the problem through an organization lens, with multiple engineers 
 - Which agent used tool X? When?
 - What are our agents costing us?
 
-That is what is what I want to explore next, once the dusty mini-PC has actually started the job.
+That is what is what I want to explore next. But first, let's get the dusty mini-pc to work.
