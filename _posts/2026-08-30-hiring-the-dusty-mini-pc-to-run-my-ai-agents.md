@@ -5,26 +5,26 @@ date: 2026-08-30
 tags: [AI, Tooling]
 ---
 
-I have been going deeper into agentic engineering for the past few months. The goal is to understand what the technology can do, and how I can integrate it into my work: into a company running a production system. For that I'm building what I call personalOS, an app that helps me manage my household, the small things of the day to day.
+I have been going deeper into agentic engineering for the past few months. The ultimate goal is to understand what the technology can do, and how I can integrate it into my work: into a company running a production system. For that I'm building what I call personalOS, an app that helps me manage my household, the small things of the day to day.
 
 While doing so, I have caught myself staring at the screen waiting for the AI agent to finish or just peeking at what it is doing. Tapping the trackpad so there is some activity to prevent the laptop from sleeping. Walking towards the laptop just to see if the agent finished. As an anecdote it's fine, as a routine for a professional, not so much.
 
 So I set myself a goal, set up a system where agents look at my personalOS backlog and generate PRs overnight so I can review and correct the agents during my day. Ideally, learning something along the way which I can introduce into production systems.
 
-I'm not starting from scratch, my setup evolved over the years, I'm currently on a semi-autonomous setup where I'm using Conductor to manage and control the agents and their worktrees. But as I wanted to run the agents in a devcontainer for a contained blast radius I switched to Paseo.
+I'm not starting from scratch, my setup evolved over the years, I'm currently on a semi-autonomous setup where I'm using [Conductor](https://conductor.build) to manage and control the agents and their worktrees. But as I wanted to run the agents in a [devcontainer](https://containers.dev) for a contained blast radius I switched to [Paseo](https://paseo.sh), which puts the agent inside the container by default.
 
 This is what my current setup looks like:
 
 - project is isolated in a devcontainer
 - the devcontainer contains (ba dum tss):
-  - Claude Code
+  - [Claude Code](https://claude.com/claude-code)
   - Paseo daemon
   - all the tools needed to work on the project
 - on the host: Paseo desktop client
 
 As I see it, the benefit is twofold. On one hand an AI agent running inside a devcontainer provides me with a controlled blast radius. All the agent sees is what's inside the container. Meaning I have full control over what goes in there: env vars, secrets, files, tools.
 
-On the other, the client and the daemon are decoupled. The daemon running inside the devcontainer controls Claude Code while the client runs in another process and they talk to each other over HTTP. By using HTTP I can not just decouple them at the process level but at the instance level, i.e. running the daemon on one computer and the client on another. That's exactly what I did next. I set up a VPN with Tailscale, installed Paseo on my phone and just like that I was able to control the agent running on my laptop.
+On the other, the client and the daemon are decoupled. The daemon running inside the devcontainer controls Claude Code while the client runs in another process and they talk to each other over HTTP. By using HTTP I can not just decouple them at the process level but at the instance level, i.e. running the daemon on one computer and the client on another. That's exactly what I did next. I set up a VPN with [Tailscale](https://tailscale.com), installed Paseo on my phone and just like that I was able to control the agent running on my laptop.
 
 Controlling the agent from my phone almost immediately made one problem evident: availability. Close the laptop lid, the agent goes to sleep. You have seen the picture (or are guilty yourself) of laptops with the lid ajar just to keep the agents grinding.
 
@@ -32,7 +32,7 @@ Nevertheless, that was one quick experiment that allowed me to tinker with perso
 
 Power is a side effect of parallelism. When agents do their work they require energy to run tests, create artefacts, do lots of IO, etc. Which, if I'm unplugged, means draining the laptop's battery. One day it's fine, do it every day and the battery will notice it. So I'm forced to be plugged-in all day, defeating the point of having a laptop. And it's annoying, the laptop gets heated up, the fan is constantly working. My fingertips feel it.
 
-With that in mind, I remembered that I already had a mini-PC at my home office which I had bought for setting up Home Assistant at home. Surprise, surprise... I never did. So it's there, gathering dust. It's not a super powerful piece of hardware. It's an Intel Celeron N5095 with 4 cores and 16 GB of RAM. Amazing, huh? State of the art. Chances are the hardware falls short compared to my MacBook Pro, tests and builds will be slower but inference still runs on Claude's servers. Anyways, it should be more than enough for running an experiment.
+With that in mind, I remembered that I already had a mini-PC at my home office which I had bought for setting up [Home Assistant](https://www.home-assistant.io) at home. Surprise, surprise... I never did. So it's there, gathering dust. It's not a super powerful piece of hardware. It's an Intel Celeron N5095 with 4 cores and 16 GB of RAM. Amazing, huh? State of the art. Chances are the hardware falls short compared to my MacBook Pro, tests and builds will be slower but inference still runs on Claude's servers. Anyways, it should be more than enough for running an experiment.
 
 I'm deliberately not going with a cloud-based solution mainly because I don't want to add yet another service I need to pay for or depend on.
 
