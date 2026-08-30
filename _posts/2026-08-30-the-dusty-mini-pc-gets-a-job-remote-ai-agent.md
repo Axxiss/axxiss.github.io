@@ -36,12 +36,12 @@ With that in mind, I remembered that I have already a mini-pc at my office which
 
 I'm deliberately not going with a cloud based solution mainly because I don't want to add yet another service I need to pay for nor depend on.
 
-Move your workloads to a 24/7 running machine and those problems are gone. Trigger an agent, close your laptop and while you go to favourite coffee shop the agent was working. We can take the setup even further by scheduling work with things like:
+Move the work to a machine that runs 24/7 and both problems are gone. I trigger an agent, close the laptop, and it keeps working while I walk to my favourite coffee shop. I can take the setup even further by scheduling work with things like:
 
 - at 01:00 the agent goes through the codebase and updates outdated documentation
 - from 02:00 to 06:00 agent looks at the backlog and implement the next items
 
-So you wake up, get a coffee and once you're done with your breakfast. You have a bunch of PRs ready for review. The agent worked overnight, you didn't. And you didn't stare anxiously at the screen while the agent was doing its thing.
+So I wake up, make a coffee, and by the time I'm done with breakfast there's a bunch of PRs waiting for review. The agent worked overnight, I didn't. And I didn't stare anxiously at the screen while it was doing its thing.
 
 Even before setting up the remote agent, a bunch of questions pop up:
 
