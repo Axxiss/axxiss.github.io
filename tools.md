@@ -51,6 +51,9 @@ exist on the day I need them.
 ## Reference and docs
 
 - **[DevDocs](https://devdocs.io)** — quicker than hunting across five official doc sites.
+- **[Diátaxis](https://diataxis.fr)** — the framework I write docs against:
+  tutorials, how-to guides, reference and explanation are four different jobs,
+  and most docs that read badly are two of them fighting over one page.
 
 {% comment %}
 Uncomment a section once it has at least one entry, so the page never ships an
