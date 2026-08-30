@@ -1,0 +1,14 @@
+"$schema" = "https://conductor.build/schemas/settings.repo.schema.json"
+
+[scripts]
+setup = "mise install && bundle install"
+# Each workspace serves on its own CONDUCTOR_PORT, so several can run at once.
+run_mode = "concurrent"
+
+[scripts.run.serve]
+description = "Serve the site with live rebuilds"
+command = "mise run serve"
+# The task binds to CONDUCTOR_PORT, which only local workspaces get.
+available_in = ["local"]
+default = true
+icon = "play"
