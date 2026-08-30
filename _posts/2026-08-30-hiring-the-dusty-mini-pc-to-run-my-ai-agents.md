@@ -11,7 +11,7 @@ While doing so, I have caught myself staring at the screen waiting for the AI ag
 
 So I set myself a goal, set up a system where agents look at my personalOS backlog and generate PRs overnight so I can review and correct the agents during my day. Ideally, learning something along the way which I can introduce into production systems.
 
-I'm not starting from scratch, my setup evolved over the years, I'm currently on a semi-autonomous setup where I'm using [Conductor](https://conductor.build) to manage and control the agents and their worktrees. But as I wanted to run the agents in a [devcontainer](https://containers.dev) for a contained blast radius I switched to [Paseo](https://paseo.sh), which puts the agent inside the container by default.
+I'm not starting from scratch, my setup evolved over the years, I'm currently on a semi-autonomous setup where I'm using [Conductor](https://conductor.build) to manage and control the agents and their worktrees. Conductor gives each agent its own git worktree, so two agents never fight over the same files. But the agents run on my Mac, as me, with my permissions. That's isolation between agents, not from my machine, something Conductor is [upfront about in their docs](https://www.conductor.build/docs/concepts/workspaces-and-branches#what-isolation-gives-you): development isolation, not a security boundary. So I wanted the agent in a [devcontainer](https://containers.dev) for a contained blast radius, and switched to [Paseo](https://paseo.sh), which puts the agent inside the container by default.
 
 This is what my current setup looks like:
 
@@ -34,7 +34,7 @@ Power is a side effect of parallelism. When agents do their work they require en
 
 With that in mind, I remembered that I already had a mini-PC at my home office which I had bought for setting up [Home Assistant](https://www.home-assistant.io) at home. Surprise, surprise... I never did. So it's there, gathering dust. It's not a super powerful piece of hardware. It's an Intel Celeron N5095 with 4 cores and 16 GB of RAM. Amazing, huh? State of the art. Chances are the hardware falls short compared to my MacBook Pro, tests and builds will be slower but inference still runs on Claude's servers. Anyways, it should be more than enough for running an experiment.
 
-I'm deliberately not going with a cloud-based solution mainly because I don't want to add yet another service I need to pay for or depend on.
+I'm deliberately not going with a cloud-based solution. I don't want yet another service to pay for, another vendor to be locked into, and another place where my data could leak.
 
 Move the work to a machine that runs 24/7 and both problems are gone. I trigger an agent, close the laptop, and it keeps working while I walk to my favourite coffee shop. I can take the setup even further by scheduling work with things like:
 
