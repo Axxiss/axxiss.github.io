@@ -3,7 +3,6 @@ layout: post
 permalink: /blog/2017/06/11/mastering-your-ide/
 title: Mastering your IDE
 date: 2017-06-11
-comments: true
 tags: [Tooling]
 ---
 Most of us, as developers we spend plenty of time improving our programming

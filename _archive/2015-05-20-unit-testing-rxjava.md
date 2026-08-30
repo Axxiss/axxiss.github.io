@@ -3,7 +3,6 @@ layout: post
 permalink: /blog/2015/05/20/unit-testing-rxjava/
 title: "Unit Testing with RxJava"
 date: 2015-05-20
-comments: true
 tags: Java
 ---
 When we are testing our [RxJava][1] code we can distinguish three main subjects to be tested:
