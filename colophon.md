@@ -45,3 +45,5 @@ working out what I think, and it's one I'm happy to direct rather than type.
   [Conductor](https://conductor.build) — the agent, running in its own git
   worktree, which is how a bad draft stays a discardable branch. The
   [tools](/tools/) page has more on that setup.
+- **No analytics** — nothing here tracks you. No third-party script, no cookie and
+  no counter. I don't know you were on this page, and I'd rather keep it that way.

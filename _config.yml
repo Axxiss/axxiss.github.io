@@ -4,7 +4,6 @@ tagline: 'Infrastructure & platform engineering'
 description: 'Alexis Mas — infrastructure and platform engineer in Valencia, Spain. Kubernetes on AWS, Terraform and Pulumi, observability, and developer tooling.'
 url: 'https://alexismas.com'
 baseurl: ''
-google_analytics: UA-46113844-1
 
 author:
   name: 'Alexis Mas'
