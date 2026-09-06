@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "What the container leaves out"
+title: "The identities I left lying around"
 date: 2026-09-06
 tags: [AI, Tooling]
-description: "What a devcontainer actually leaves out: two AI coding agents that routed around the credentials I gave them by finding the wider logins already sitting on my laptop."
+description: "Two AI coding agents that ran out of the credential I gave them, went looking for the wider logins already sitting on my laptop, and used them."
 ---
 
 An agent working on one of my projects needed to open a pull request. The project was configured with a fine-grained personal access token that couldn't see the repository, so the attempt failed.
