@@ -9,7 +9,9 @@ description: "TBD — one sentence, SEO."
 After scavenging for cables in a box full of different type of cables found all I needed to setup the mini-pc at my desk and installed Debian Trixie.
 Then I installed some basic tools for the setup I wanted (git, tailscale, ssh, docker) and created a bootstrap script to handle the provisioning of the mini-pc. Just a bunch of bash scripts in case I need to reprovision the mini-pc or move the workload to a new hardware. It's ugly but it works.
 
-The setup process didn't come without surprises, the SSH connection was slow to the point it was unusable. I could have spent days barking at the wrong tree, digging into networking or container configuration on my own. Thankfully, an agent doing more than I've asked diagnosed the issue as a hardware problem, which had an easy fix: plugging a cable into the mini-pc.
+The setup from the first post moves onto the mini-pc mostly unchanged, just split across two machines. Each project is a devcontainer on the mini-PC, and inside it sits Claude Code, the Paseo daemon and the project’s tooling. The desktop client stays on both my Mac and on my phone. They talk over HTTP, making the decoupling possible. On each container the daemon listens on 6767 and dev servers get 4210-4219.
+
+The migration didn't come without surprises, the SSH connection was slow to the point it was unusable. I could have spent days barking at the wrong tree, digging into networking or container configuration on my own. Thankfully, an agent doing more than I've asked diagnosed the issue as a hardware problem, which had an easy fix: plugging a cable into the mini-pc.
 
 With the SSH problem gone, it was time to setup my personalOS project (which already had a devcontainer configured) into the mini-pc. Which immediately brought two questions.
 
@@ -34,4 +36,4 @@ Suddendly, the morning after the intial setup I couldn't SSH into the mini-pc an
 
 The cost of not juggling with ports is the extra setup needed to get the Tailnet sidecar up and running. After a week of using it, it was the right choice. I know which project I'm interacting with by just glimping at the URL both on Paseo's config or on my browser.
 
-Summing up, devcontainers in combination with a tailscale sidecar allowed me to run autonmous during the past week. Since then my agent are working nights, I have them scheduled to run at 01:00 and 03:00 am, implementing a PR on each run. Which I review and merge while enjoying a coffee in the morning.
+Summing up, devcontainers in combination with a tailscale sidecar allowed me to run autonmous during the past week. Since then my agent are working nights, I have them scheduled on Paseo to run at 01:00 and 03:00 am, implementing a PR on each run. Which I review and merge while enjoying a coffee in the morning.
