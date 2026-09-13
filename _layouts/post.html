@@ -12,6 +12,14 @@ layout: default
   </header>
 
   <section class="post">
+    {% if page.image %}
+      <!-- The post's og:image, shown once above the body. width/height are the
+           dimensions every card here is authored at; they only reserve the box
+           before the file loads, and css/main.css decides the rendered size.
+           Guarded because no archive post carries an image. -->
+      <img src="{{ page.image | relative_url }}" alt="{{ page.image_alt }}"
+           width="1200" height="630">
+    {% endif %}
     {{ content }}
   </section>
 </article>

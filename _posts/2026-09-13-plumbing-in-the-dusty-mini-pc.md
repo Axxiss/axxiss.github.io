@@ -5,6 +5,7 @@ date: 2026-09-13
 tags: [AI, Tooling]
 description: "The plumbing behind running AI agents on a mini-PC: a devcontainer per project, a Tailscale sidecar giving each container its own hostname, and a small CLI to drive them from my Mac."
 image: /images/posts/plumbing-in-the-dusty-mini-pc.png
+image_alt: "A dusty mini-PC with three pipes running out of it, each ending in a paper tag: project-a.ts.net:6767, project-b.ts.net:6767, project-c.ts.net:6767. Same port on all three; only the hostname changes."
 ---
 
 After scavenging for cables in a box full of different types of cables, I found all I needed to set up the mini-PC at my desk and installed Debian Trixie. Then I installed some basic tools for the setup I wanted (git, tailscale, ssh, docker) and created a bootstrap script to handle the provisioning of the mini-PC. Just a bunch of bash scripts in case I need to reprovision the mini-PC or move the workload to new hardware. It's ugly but it works.

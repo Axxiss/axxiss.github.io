@@ -133,3 +133,17 @@ pre.highlight code,
   padding-top: .35em;
   border-top: 3px solid var(--accent);
 }
+
+/* A post's illustration, rendered by _layouts/post.html above the body copy.
+   uno.css already gives .post img its max-width, centring and radius; these are
+   what it is missing for an image carrying intrinsic width/height attributes.
+   Nothing else on the site puts an image inside .post — the profile photo is
+   .user-image, out in the cover panel — so this rules the illustration alone. */
+.post img {
+  display: block;
+  /* Without this the attribute height="630" is honoured literally while
+     max-width scales the width down, and the image comes out squashed. */
+  height: auto;
+  /* uno.css sets `margin: 0 auto`; the first paragraph needs the gap. */
+  margin: 0 auto 1.6em;
+}
