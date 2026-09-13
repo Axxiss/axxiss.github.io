@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "TBD"
+title: "Plumbing in the dusty mini-PC"
 date: 2026-09-13
 tags: [AI, Tooling]
-description: "TBD — one sentence, SEO."
+description: "The plumbing behind running AI agents on a mini-PC: a devcontainer per project, a Tailscale sidecar giving each container its own hostname, and a small CLI to drive them from my Mac."
 ---
 
 After scavenging for cables in a box full of different types of cables, I found all I needed to set up the mini-PC at my desk and installed Debian Trixie. Then I installed some basic tools for the setup I wanted (git, tailscale, ssh, docker) and created a bootstrap script to handle the provisioning of the mini-PC. Just a bunch of bash scripts in case I need to reprovision the mini-PC or move the workload to new hardware. It's ugly but it works.
