@@ -21,10 +21,11 @@ How to manage the project? Initial setup and interacting with the devcontainer (
 For that I ended up creating a small CLI tool which I called `fleet` (as if two containers were a fleet). It's a rather simple tool that runs commands from my Mac inside the mini-PC over SSH. Some of the commands it has:
 
 ```
-  fleet add GIT_URL           # Clone a repo onto the host
-  fleet exec REPO -- COMMAND  # Run one command in the devcontainer of a repo
-  fleet up REPO               # Boot the devcontainer of a repo, and leave it running
+fleet add GIT_URL           # Clone a repo onto the host
+fleet exec REPO -- COMMAND  # Run one command in the devcontainer of a repo
+fleet up REPO               # Boot the devcontainer of a repo
 ```
+<br/>
 
 The second question was: How to access the container?
 
