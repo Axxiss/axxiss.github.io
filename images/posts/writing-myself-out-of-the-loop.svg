@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Writing myself out of the loop</title>
+  <desc id="desc">A bar chart of pull requests merged per day in personal-os, 18 Aug – 18 Sep 2026. A tall burst of hand-written work, a flat stretch of almost nothing while the mini-PC was built, then a steady run of eight to eighteen a day once the agents ran on a schedule.</desc>
+  <defs>
+    <linearGradient id="sky" gradientUnits="userSpaceOnUse" x1="197" y1="-165" x2="1003" y2="795">
+      <stop offset="0" stop-color="#1a3f7d"/>
+      <stop offset="0.55" stop-color="#12326b"/>
+      <stop offset="1" stop-color="#0a1c40"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#sky)"/>
+  <text x="80" y="150" font-family="Georgia, serif" font-size="58" fill="#fcfbf7">Writing myself out of the loop</text>
+  <text x="80" y="196" font-family="Georgia, serif" font-size="23" fill="#fcfbf7" fill-opacity=".62">222 pull requests · 18 Aug – 18 Sep 2026</text>
+  <rect x="240.4" y="270" width="294.2" height="250" fill="#fcfbf7" fill-opacity=".05"/>
+  <text x="252.4" y="288" font-family="Georgia, serif" font-size="20" fill="#fcfbf7" fill-opacity=".72">building the mini-PC</text>
+  <path d="M80.0,520 V427.2 Q80.0,422.2 85.0,422.2 H101.7 Q106.7,422.2 106.7,427.2 V520 Z" fill="#e0a800"/>
+  <path d="M112.7,520 V476.1 Q112.7,471.1 117.7,471.1 H134.4 Q139.4,471.1 139.4,476.1 V520 Z" fill="#e0a800"/>
+  <path d="M145.4,520 V427.2 Q145.4,422.2 150.4,422.2 H167.1 Q172.1,422.2 172.1,427.2 V520 Z" fill="#e0a800"/>
+  <path d="M178.1,520 V427.2 Q178.1,422.2 183.1,422.2 H199.8 Q204.8,422.2 204.8,427.2 V520 Z" fill="#e0a800"/>
+  <path d="M210.8,520 V305.0 Q210.8,300.0 215.8,300.0 H232.4 Q237.4,300.0 237.4,305.0 V520 Z" fill="#e0a800"/>
+  <path d="M243.4,520 V488.3 Q243.4,483.3 248.4,483.3 H265.1 Q270.1,483.3 270.1,488.3 V520 Z" fill="#e0a800"/>
+  <path d="M276.1,520 V512.8 Q276.1,507.8 281.1,507.8 H297.8 Q302.8,507.8 302.8,512.8 V520 Z" fill="#e0a800"/>
+  <path d="M341.5,520 V488.3 Q341.5,483.3 346.5,483.3 H363.2 Q368.2,483.3 368.2,488.3 V520 Z" fill="#e0a800"/>
+  <path d="M374.2,520 V500.6 Q374.2,495.6 379.2,495.6 H395.9 Q400.9,495.6 400.9,500.6 V520 Z" fill="#e0a800"/>
+  <path d="M406.9,520 V512.8 Q406.9,507.8 411.9,507.8 H428.6 Q433.6,507.8 433.6,512.8 V520 Z" fill="#e0a800"/>
+  <path d="M439.6,520 V476.1 Q439.6,471.1 444.6,471.1 H461.2 Q466.2,471.1 466.2,476.1 V520 Z" fill="#e0a800"/>
+  <path d="M570.3,520 V488.3 Q570.3,483.3 575.3,483.3 H592.0 Q597.0,483.3 597.0,488.3 V520 Z" fill="#e0a800"/>
+  <path d="M603.0,520 V488.3 Q603.0,483.3 608.0,483.3 H624.7 Q629.7,483.3 629.7,488.3 V520 Z" fill="#e0a800"/>
+  <path d="M635.7,520 V476.1 Q635.7,471.1 640.7,471.1 H657.4 Q662.4,471.1 662.4,476.1 V520 Z" fill="#e0a800"/>
+  <path d="M668.4,520 V390.6 Q668.4,385.6 673.4,385.6 H690.1 Q695.1,385.6 695.1,390.6 V520 Z" fill="#e0a800"/>
+  <path d="M701.1,520 V476.1 Q701.1,471.1 706.1,471.1 H722.8 Q727.8,471.1 727.8,476.1 V520 Z" fill="#e0a800"/>
+  <path d="M733.8,520 V512.8 Q733.8,507.8 738.8,507.8 H755.4 Q760.4,507.8 760.4,512.8 V520 Z" fill="#e0a800"/>
+  <path d="M766.4,520 V390.6 Q766.4,385.6 771.4,385.6 H788.1 Q793.1,385.6 793.1,390.6 V520 Z" fill="#e0a800"/>
+  <path d="M799.1,520 V353.9 Q799.1,348.9 804.1,348.9 H820.8 Q825.8,348.9 825.8,353.9 V520 Z" fill="#e0a800"/>
+  <path d="M831.8,520 V427.2 Q831.8,422.2 836.8,422.2 H853.5 Q858.5,422.2 858.5,427.2 V520 Z" fill="#e0a800"/>
+  <path d="M864.5,520 V353.9 Q864.5,348.9 869.5,348.9 H886.2 Q891.2,348.9 891.2,353.9 V520 Z" fill="#e0a800"/>
+  <path d="M897.2,520 V366.1 Q897.2,361.1 902.2,361.1 H918.9 Q923.9,361.1 923.9,366.1 V520 Z" fill="#e0a800"/>
+  <path d="M929.9,520 V317.2 Q929.9,312.2 934.9,312.2 H951.6 Q956.6,312.2 956.6,317.2 V520 Z" fill="#e0a800"/>
+  <path d="M962.6,520 V353.9 Q962.6,348.9 967.6,348.9 H984.2 Q989.2,348.9 989.2,353.9 V520 Z" fill="#e0a800"/>
+  <path d="M995.2,520 V390.6 Q995.2,385.6 1000.2,385.6 H1016.9 Q1021.9,385.6 1021.9,390.6 V520 Z" fill="#e0a800"/>
+  <path d="M1027.9,520 V402.8 Q1027.9,397.8 1032.9,397.8 H1049.6 Q1054.6,397.8 1054.6,402.8 V520 Z" fill="#e0a800"/>
+  <path d="M1060.6,520 V402.8 Q1060.6,397.8 1065.6,397.8 H1082.3 Q1087.3,397.8 1087.3,402.8 V520 Z" fill="#e0a800"/>
+  <path d="M1093.3,520 V353.9 Q1093.3,348.9 1098.3,348.9 H1115.0 Q1120.0,348.9 1120.0,353.9 V520 Z" fill="#e0a800"/>
+  <line x1="763.4" y1="270" x2="763.4" y2="520" stroke="#fcfbf7" stroke-opacity=".38" stroke-width="1.5" stroke-dasharray="5 5"/>
+  <text x="772.4" y="288" font-family="Georgia, serif" font-size="20" fill="#fcfbf7" fill-opacity=".72">two a night</text>
+  <line x1="926.9" y1="270" x2="926.9" y2="520" stroke="#fcfbf7" stroke-opacity=".38" stroke-width="1.5" stroke-dasharray="5 5"/>
+  <text x="935.9" y="288" font-family="Georgia, serif" font-size="20" fill="#fcfbf7" fill-opacity=".72">every 2 hours</text>
+  <line x1="80" y1="520" x2="1120" y2="520" stroke="#fcfbf7" stroke-opacity=".5" stroke-width="2"/>
+  <text x="80" y="558" font-family="Georgia, serif" font-size="21" fill="#fcfbf7" fill-opacity=".62">pull requests merged per day</text>
+</svg>

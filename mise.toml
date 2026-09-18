@@ -23,9 +23,9 @@ description = "Serve the site locally with live rebuilds"
 run = 'bundle exec jekyll serve --drafts --future --port "${CONDUCTOR_PORT:-4000}"'
 
 [tasks.chart]
-description = "Regenerate the merges-per-day chart in the autonomous agents post"
+description = "Regenerate the merges-per-day chart, and optionally the post's card"
 # Reads the pull request history from GitHub, so it needs gh logged in. Not a
 # build step: the SVG is committed, and this only runs when the numbers should
 # move. Pass --end to stop on a finished day, or the last bar is drawn as a day
-# still in progress.
+# still in progress, and --hero to redraw the 1200x630 social card beside it.
 run = "bin/merges-chart"

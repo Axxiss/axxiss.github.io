@@ -4,6 +4,8 @@ title: "Writing myself out of the loop"
 date: 2026-09-19
 tags: [AI, Tooling]
 description: "From instructing AI coding agents step by step to a schedule that runs them every two hours: the skill that mattered more than the cron, and what the output still can't tell me."
+image: /images/posts/writing-myself-out-of-the-loop.png
+image_alt: "A bar chart of pull requests merged per day, in ochre on navy. A tall burst while I was doing the work by hand, a flat stretch of almost nothing while the mini-PC was built, then a steady run of eight to eighteen a day once the agents ran on a schedule."
 ---
 
 I started my agentic development experiment from scratch, with a vanilla [Claude Code](https://claude.com/claude-code): no skills, no plugins, no customization at all. My first two goals were quite clear: [move them to the mini-PC](/blog/2026/08/30/hiring-the-dusty-mini-pc-to-run-my-ai-agents/) and get agents to work nights.
