@@ -3,6 +3,7 @@ layout: post
 title: "Hiring the dusty mini-PC to run my AI agents"
 date: 2026-08-30
 tags: [AI, Tooling]
+series: "Agents on the dusty mini-PC"
 description: "Moving my AI coding agents off the laptop: devcontainer isolation, a daemon and client on different machines, and a dusty Intel mini-PC that stays awake all night."
 ---
 

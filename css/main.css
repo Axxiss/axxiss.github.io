@@ -172,3 +172,40 @@ pre.highlight code,
   line-height: 1.5;
   color: var(--meta);
 }
+
+/* Series navigation, appended by _layouts/post.html to any post carrying a
+   `series` key. It sits outside .post, so the body copy's rules — including the
+   ochre lead-in on h2 — never reach it.
+
+   Numbered rather than bulleted: the order is the reading order, and a reader
+   arriving at post three from a search result wants to know there are two
+   before it. The current post is a span rather than a link, so the list never
+   offers the page you are already on. */
+.series {
+  margin: 3em 0 0;
+  padding-top: 1.2em;
+  border-top: 3px solid var(--accent);
+}
+
+.series__title {
+  margin: 0 0 .6em;
+  font-size: 1em;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--meta);
+}
+
+.series__list {
+  margin: 0;
+  padding-left: 1.3em;
+}
+
+.series__item {
+  margin-bottom: .35em;
+  line-height: 1.5;
+}
+
+/* The post you are reading: present, ordered, and plainly not a link. */
+.series__current {
+  color: var(--muted);
+}
