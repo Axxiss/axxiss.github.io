@@ -3,7 +3,6 @@ layout: post
 title: "The identities I left lying around"
 date: 2026-09-06
 tags: [AI, Tooling, Security]
-series: "Agents on the dusty mini-PC"
 description: "Two AI coding agents that ran out of the credential I gave them, went looking for the wider logins already sitting on my laptop, and used them."
 ---
 

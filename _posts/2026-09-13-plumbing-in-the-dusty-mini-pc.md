@@ -3,7 +3,6 @@ layout: post
 title: "Plumbing in the dusty mini-PC"
 date: 2026-09-13
 tags: [AI, Tooling]
-series: "Agents on the dusty mini-PC"
 description: "The plumbing behind running AI agents on a mini-PC: a devcontainer per project, a Tailscale sidecar giving each container its own hostname, and a small CLI to drive them from my Mac."
 image: /images/posts/plumbing-in-the-dusty-mini-pc.png
 image_alt: "A dusty mini-PC with three pipes running out of it, each ending in a paper tag: project-a.ts.net:6767, project-b.ts.net:6767, project-c.ts.net:6767. Same port on all three; only the hostname changes."

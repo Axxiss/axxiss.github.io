@@ -22,31 +22,4 @@ layout: default
     {% endif %}
     {{ content }}
   </section>
-
-  {% if page.series %}
-    {%- assign series_posts = site.posts | where: "series", page.series | sort: "date" -%}
-    {%- if series_posts.size > 1 -%}
-      <!-- Series navigation, rendered rather than written into the posts. The
-           prose of a published post then stays exactly as it was published, and
-           a new post joins the series by adding one front matter key.
-
-           site.posts only, so nothing here reaches feed.xml and no reader
-           re-surfaces an old post. Drafts appear only under --drafts, which is
-           what a preview wants and a deploy never sees. -->
-      <nav class="series" aria-labelledby="series-title">
-        <h2 class="series__title" id="series-title">{{ page.series }}</h2>
-        <ol class="series__list">
-          {%- for post in series_posts %}
-            <li class="series__item">
-              {%- if post.url == page.url -%}
-                <span class="series__current" aria-current="true">{{ post.title }}</span>
-              {%- else -%}
-                <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-              {%- endif -%}
-            </li>
-          {%- endfor %}
-        </ol>
-      </nav>
-    {%- endif -%}
-  {% endif %}
 </article>

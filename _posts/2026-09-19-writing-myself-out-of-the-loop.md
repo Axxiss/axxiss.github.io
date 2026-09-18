@@ -3,7 +3,6 @@ layout: post
 title: "Writing myself out of the loop"
 date: 2026-09-19
 tags: [AI, Tooling]
-series: "Agents on the dusty mini-PC"
 description: "From instructing AI coding agents step by step to a schedule that runs them every two hours: the skill that mattered more than the cron, and what the output still can't tell me."
 ---
 
