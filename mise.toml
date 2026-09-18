@@ -21,3 +21,11 @@ description = "Serve the site locally with live rebuilds"
 # Conductor gives each workspace its own port block, so parallel workspaces
 # never collide. Outside Conductor, fall back to Jekyll's own default.
 run = 'bundle exec jekyll serve --drafts --future --port "${CONDUCTOR_PORT:-4000}"'
+
+[tasks.chart]
+description = "Regenerate the merges-per-day chart in the autonomous agents post"
+# Reads the pull request history from GitHub, so it needs gh logged in. Not a
+# build step: the SVG is committed, and this only runs when the numbers should
+# move. Pass --end to stop on a finished day, or the last bar is drawn as a day
+# still in progress.
+run = "bin/merges-chart"
