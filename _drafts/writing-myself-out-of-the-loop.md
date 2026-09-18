@@ -18,30 +18,24 @@ My workflow wasn't there yet, I was still in the loop, giving the initial instru
 
 My first night run was a description of the workflow I was following:
 
-1. Choose a bean
+1. Choose a [bean](https://github.com/hmans/beans) i.e. a ticket
 2. Implement the bean
 3. Simplify the change
 4. Review the change, and fix what the review finds (up to 3 times)
 
 Once the nightly prompt proved to be right I extracted it to a skill which I called `/implement-a-bean`. Meaning the nightly prompt was just calling that skill.
 
-Surprisingly, the nightly run is not what had the most impact on my workflow — it was the skill. I've found myself transitioning from instructing agents to opening a few sessions, calling `/implement-a-bean` then move to something else and review the PRs afterwards. After a few days following the same repetitive behaviour the natural step was to remove myself out of the process. So I updated my [Paseo](https://paseo.sh) schedule to run every 2 hours instead of 2 per night, putting a WIP limit to the amount of PRs open at any time.
+Surprisingly, the nightly run is not what had the most impact on my workflow — it was the skill. I've found myself transitioning from instructing agents to opening a few sessions, calling `/implement-a-bean` then move to something else and review the PRs afterwards. After a few days following the same repetitive behaviour the natural step was to remove myself out of the process. So I updated my [Paseo](https://paseo.sh) schedule to run every 2 hours instead of 2 per night, putting a WIP limit to the amount of PRs open at any time. The actual prompt:
 
-```
 1. Count the open pull requests.
 2. If five or more are open, do nothing. Finish, and archive the workspace.
 3. If fewer than five are open, run the `implement-a-bean` skill.
-```
-
-<br/>
 
 A nice chart is worth more than a thousand words:
 
 {% include charts/merges-per-day.html %}
 
 Before setting the mini-PC up is where I put most of the effort, thinking through edge cases and plumbing things up. When I started with 2 PRs per night I was also running `/implement-a-bean` throughout my day, it was a trigger and forget thing. Which explains the jump in the number of PRs per day. Finally, I switched to agents running every 2 hours.
-
-{% include charts/merges-cumulative.html %}
 
 It goes without saying that the scheduled agents result in shipping faster. Moving the bottleneck from build time to review time. Although if I'm being honest, I'm not reading the code on most of the PRs. I skim through the changed files looking for DB migrations otherwise I rely on the screenshots included on the PR description. One of the requirements for changes touching the UI is to include screenshots of the change. This allows me to gauge whether the implementation is what I wanted or not.
 
