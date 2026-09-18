@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "The road into autonomous coding agents"
+title: "Writing myself out of the loop"
 date: 2026-09-20
 tags: [AI, Tooling]
-description: "TBD — one sentence for search engines."
+description: "From instructing AI coding agents step by step to a schedule that runs them every two hours: the skill that mattered more than the cron, and what the output still can't tell me."
 # Uncomment on publish, once the illustration exists. Left commented so
 # bin/check-links passes on the draft — a missing image is a hard failure.
 # image: /images/posts/TBD.png
