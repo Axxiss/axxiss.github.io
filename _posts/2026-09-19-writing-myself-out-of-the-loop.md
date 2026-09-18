@@ -5,10 +5,6 @@ date: 2026-09-19
 tags: [AI, Tooling]
 series: "Agents on the dusty mini-PC"
 description: "From instructing AI coding agents step by step to a schedule that runs them every two hours: the skill that mattered more than the cron, and what the output still can't tell me."
-# Uncomment on publish, once the illustration exists. Left commented so
-# bin/check-links passes on the draft — a missing image is a hard failure.
-# image: /images/posts/TBD.png
-# image_alt: "TBD"
 ---
 
 I started my agentic development experiment from scratch, with a vanilla [Claude Code](https://claude.com/claude-code): no skills, no plugins, no customization at all. My first two goals were quite clear: [move them to the mini-PC](/blog/2026/08/30/hiring-the-dusty-mini-pc-to-run-my-ai-agents/) and get agents to work nights.
