@@ -20,4 +20,4 @@ run = "bundle exec ruby bin/check-links"
 description = "Serve the site locally with live rebuilds"
 # Conductor gives each workspace its own port block, so parallel workspaces
 # never collide. Outside Conductor, fall back to Jekyll's own default.
-run = 'bundle exec jekyll serve --port "${CONDUCTOR_PORT:-4000}"'
+run = 'bundle exec jekyll serve --drafts --future --port "${CONDUCTOR_PORT:-4000}"'

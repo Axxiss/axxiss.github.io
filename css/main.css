@@ -147,3 +147,28 @@ pre.highlight code,
   /* uno.css sets `margin: 0 auto`; the first paragraph needs the gap. */
   margin: 0 auto 1.6em;
 }
+
+/* A data figure inside a post: an inline SVG chart plus its caption. The SVG
+   carries no literal hue — it consumes the same roles as every stylesheet here,
+   so re-theming the palette re-themes the chart. Kept out of uno.css because
+   only .post ever holds one.
+
+   The chart is deliberately not an <img>: a raster would not follow the palette,
+   and an external script would break the site's no-JavaScript promise. Per-bar
+   <title> elements give the browser's own tooltips, so the figure is readable
+   without one. */
+.post .chart {
+  margin: 0 0 1.6em;
+}
+
+.post .chart svg {
+  display: block;
+  overflow: visible;
+}
+
+.post .chart figcaption {
+  margin-top: .5em;
+  font-size: .85em;
+  line-height: 1.5;
+  color: var(--meta);
+}
