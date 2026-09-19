@@ -1,0 +1,259 @@
+#!/usr/bin/env python3
+"""Render the merges-per-day chart for "Writing myself out of the loop".
+
+    bin/merges-chart                       # everything up to today
+    bin/merges-chart --end 2026-09-18      # stop on a finished day
+
+Fetches the pull request history with `gh` and writes an inline SVG to
+_includes/charts/merges-per-day.html, which the post includes.
+
+Python rather than Ruby, the language of bin/check-links: this is an authoring
+tool that never runs in CI or at build time, and it needs no gems.
+
+**It is an SVG, not an image.** A PNG could not follow the palette, and a
+charting library would need JavaScript, which the colophon promises the site
+does not serve. Every colour here is a palette *role* — var(--strong) and the
+rest — never a literal hue, so re-theming css/palette.css re-themes the chart.
+Each bar carries a <title>, which is how the browser gives a tooltip with no
+script.
+
+The annotations belong to this post and are deliberately hard-coded: the shaded
+stretch is the move onto the mini-PC, and the two dashed markers are the days
+the schedule changed. A different post would want different ones.
+
+Without --end the last day is still in progress, so it is drawn as an outline
+rather than a fill. Publishing a solid bar for a part-finished day would show a
+fall that has not happened.
+"""
+import argparse, collections, json, pathlib, subprocess, sys
+from datetime import datetime, timedelta, timezone
+
+MADRID = timezone(timedelta(hours=2))            # CEST, the clock the agents keep
+W, H = 720, 250
+L, R, T, B = 34, 10, 26, 34                      # margins: L leaves room for the y labels
+GAP, RADIUS = 2, 4                               # 2px between bars, 4px on the data end
+OUT = pathlib.Path('_includes/charts/merges-per-day.html')
+HERO_SVG = pathlib.Path('images/posts/writing-myself-out-of-the-loop.svg')
+HERO_PNG = HERO_SVG.with_suffix('.png')
+
+# The card cannot read css/palette.css — an og:image is fetched on its own, with
+# no stylesheet — so these are literal values lifted from the palette. Keep them
+# in step with navy, ochre, paper and on-navy. Same approach as the card for
+# "Plumbing in the dusty mini-PC".
+NAVY_HI, NAVY, NAVY_LO = '#1a3f7d', '#12326b', '#0a1c40'
+OCHRE, PAPER = '#e0a800', '#fcfbf7' 
+
+TROUGH = (datetime(2026, 8, 23).date(), datetime(2026, 9, 1).date())
+MARKERS = [(datetime(2026, 9, 8).date(), "two a night"),
+           (datetime(2026, 9, 13).date(), "every 2 hours")]
+
+
+def fetch(repo):
+    out = subprocess.run(['gh', 'pr', 'list', '--repo', repo, '--state', 'all',
+                          '--limit', '400', '--json', 'mergedAt'],
+                         capture_output=True, text=True)
+    if out.returncode:
+        sys.exit(f"gh failed: {out.stderr.strip()}")
+    return json.loads(out.stdout)
+
+
+def series(prs, end=None):
+    def local(t):
+        return datetime.strptime(t, "%Y-%m-%dT%H:%M:%SZ").replace(
+            tzinfo=timezone.utc).astimezone(MADRID).date()
+    counts = collections.Counter(local(p['mergedAt']) for p in prs if p.get('mergedAt'))
+    if not counts:
+        sys.exit("no merged pull requests found")
+    lo, hi = min(counts), max(counts)
+    if end:
+        hi = datetime.strptime(end, "%Y-%m-%d").date()
+        counts = {d: n for d, n in counts.items() if d <= hi}
+    days, d = [], lo
+    while d <= hi:
+        days.append((d, counts.get(d, 0)))
+        d += timedelta(days=1)
+    return days
+
+
+def render(days, partial_last):
+    plot_w, plot_h = W - L - R, H - T - B
+    n = len(days)
+    bw = (plot_w - GAP * (n - 1)) / n
+    peak = max(v for _, v in days)
+    # Round the axis up to a multiple of 5 so a record day never overflows the
+    # plot; 20 is the floor so the shape stays comparable run to run.
+    ymax = max(20, -(-peak // 5) * 5)
+    x = lambda i: L + i * (bw + GAP)
+    y = lambda v: T + plot_h - (v / ymax) * plot_h
+    floor = T + plot_h
+    today = days[-1][0] if partial_last else None
+    at = {d: i for i, (d, _) in enumerate(days)}
+
+    span = f"{days[0][0]:%-d %B} to {days[-1][0]:%-d %B %Y}"
+    note = (" The final day is still in progress and is drawn as an outline."
+            if partial_last else "")
+    o = ['<figure class="chart">',
+         f'<svg viewBox="0 0 {W} {H}" width="100%" role="img" aria-label="Pull requests '
+         f'merged per day in personal-os, {span}.{note}">']
+
+    # The wash runs from the left edge of the first trough day to the left edge
+    # of the last. Both boundary days merged nothing, so no bar sits at either
+    # end and the tint reads as the gap it is.
+    a, b = TROUGH
+    left_a, left_b = x(at[a]) - GAP/2, x(at[b]) - GAP/2
+    o.append(f'<rect x="{left_a:.1f}" y="{T}" width="{left_b-left_a:.1f}" '
+             f'height="{plot_h}" fill="var(--ochre-a12)"/>')
+    o.append(f'<text x="{left_a+3:.1f}" y="{T-12}" font-size="10.5" '
+             f'fill="var(--muted)">building the mini-PC</text>')
+
+
+    for day, label in MARKERS:
+        if day not in at:
+            continue
+        mx = x(at[day]) - GAP / 2
+        o.append(f'<line x1="{mx:.1f}" y1="{T-6}" x2="{mx:.1f}" y2="{floor}" '
+                 f'stroke="var(--muted)" stroke-width="1" stroke-dasharray="3 3"/>')
+        o.append(f'<text x="{mx+4:.1f}" y="{T-12}" font-size="10.5" fill="var(--muted)">{label}</text>')
+
+    for v in range(0, ymax + 1, 5):
+        o.append(f'<line x1="{L}" y1="{y(v):.1f}" x2="{W-R}" y2="{y(v):.1f}" '
+                 f'stroke="var(--rule)" stroke-width="1"/>')
+        o.append(f'<text x="{L-7}" y="{y(v)+3.5:.1f}" text-anchor="end" font-size="10" '
+                 f'fill="var(--meta)">{v}</text>')
+
+    for day, count in days:
+        if not count:
+            continue                              # a day with no merges shows the gap
+        i = at[day]
+        top, left = y(count), x(i)
+        r = min(RADIUS, floor - top)
+        path = (f'M{left:.1f},{floor} V{top+r:.1f} Q{left:.1f},{top:.1f} {left+r:.1f},{top:.1f} '
+                f'H{left+bw-r:.1f} Q{left+bw:.1f},{top:.1f} {left+bw:.1f},{top+r:.1f} V{floor} Z')
+        if day == today:
+            o.append(f'<path d="{path}" fill="none" stroke="var(--strong)" stroke-width="1.5">'
+                     f'<title>{day:%-d %b} — {count} merged so far, day still running</title></path>')
+            o.append(f'<text x="{left+bw/2:.1f}" y="{top-6:.1f}" text-anchor="middle" '
+                     f'font-size="9.5" fill="var(--muted)">so far</text>')
+        else:
+            o.append(f'<path d="{path}" fill="var(--strong)">'
+                     f'<title>{day:%-d %b} — {count} merged</title></path>')
+
+    o.append(f'<line x1="{L}" y1="{floor}" x2="{W-R}" y2="{floor}" stroke="var(--meta)" stroke-width="1"/>')
+    for i, (day, _) in enumerate(days):
+        if i % 5:
+            continue                              # every fifth day, or the labels collide
+        o.append(f'<text x="{x(i)+bw/2:.1f}" y="{floor+15}" text-anchor="middle" '
+                 f'font-size="10" fill="var(--meta)">{day:%-d %b}</text>')
+
+    o += ['</svg>',
+          '<figcaption>Pull requests merged per day in <code>personal-os</code>. The shaded '
+          'stretch is the move onto the mini-PC.'
+          + (' The last bar is today, still running.' if partial_last else '')
+          + '</figcaption>',
+          '</figure>']
+    return "\n".join(o) + "\n"
+
+
+def hero(days, title):
+    """A 1200x630 social card: the same shape, drawn to survive a thumbnail.
+
+    Not the body chart scaled up. Tick labels at 10px vanish in a timeline, so
+    the axis, the gridlines and the numbers all go; what is left is the silhouette
+    — the burst, the trough, the plateau — which is the thing worth recognising
+    at that size. Ochre on navy because ochre is the palette's fill colour and
+    clears 3:1 on this background.
+    """
+    CW, CH = 1200, 630
+    left, right, top, floor = 80, 1120, 300, 520
+    plot_w = right - left
+    n = len(days)
+    gap = 6
+    bw = (plot_w - gap * (n - 1)) / n
+    peak = max(v for _, v in days)
+    x = lambda i: left + i * (bw + gap)
+    y = lambda v: floor - (v / peak) * (floor - top)
+    at = {d: i for i, (d, _) in enumerate(days)}
+    span = f"{days[0][0]:%-d %b} – {days[-1][0]:%-d %b %Y}"
+    total = sum(v for _, v in days)
+
+    o = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{CW}" height="{CH}" '
+         f'viewBox="0 0 {CW} {CH}" role="img" aria-labelledby="title desc">',
+         f'  <title id="title">{title}</title>',
+         f'  <desc id="desc">A bar chart of pull requests merged per day in personal-os, '
+         f'{span}. A tall burst of hand-written work, a flat stretch of almost nothing while '
+         f'the mini-PC was built, then a steady run of eight to eighteen a day once the '
+         f'agents ran on a schedule.</desc>',
+         '  <defs>',
+         '    <linearGradient id="sky" gradientUnits="userSpaceOnUse" x1="197" y1="-165" x2="1003" y2="795">',
+         f'      <stop offset="0" stop-color="{NAVY_HI}"/>',
+         f'      <stop offset="0.55" stop-color="{NAVY}"/>',
+         f'      <stop offset="1" stop-color="{NAVY_LO}"/>',
+         '    </linearGradient>',
+         '  </defs>',
+         f'  <rect width="{CW}" height="{CH}" fill="url(#sky)"/>',
+         f'  <text x="{left}" y="150" font-family="Georgia, serif" font-size="58" '
+         f'fill="{PAPER}">{title}</text>',
+         f'  <text x="{left}" y="196" font-family="Georgia, serif" font-size="23" '
+         f'fill="{PAPER}" fill-opacity=".62">{total} pull requests · {span}</text>']
+
+    a, b = TROUGH
+    if a in at and b in at:
+        o.append(f'  <rect x="{x(at[a])-gap/2:.1f}" y="{top-30:.0f}" '
+                 f'width="{x(at[b])-x(at[a]):.1f}" height="{floor-top+30:.0f}" '
+                 f'fill="{PAPER}" fill-opacity=".05"/>')
+        # Unlabelled, the panel reads as a stray rectangle; the dip needs saying.
+        o.append(f'  <text x="{x(at[a])+9:.1f}" y="{top-12:.0f}" font-family="Georgia, serif" '
+                 f'font-size="20" fill="{PAPER}" fill-opacity=".72">building the mini-PC</text>')
+
+    for day, count in days:
+        if not count:
+            continue
+        i = at[day]
+        ytop = y(count)
+        r = min(5, floor - ytop)
+        o.append(f'  <path d="M{x(i):.1f},{floor} V{ytop+r:.1f} Q{x(i):.1f},{ytop:.1f} '
+                 f'{x(i)+r:.1f},{ytop:.1f} H{x(i)+bw-r:.1f} Q{x(i)+bw:.1f},{ytop:.1f} '
+                 f'{x(i)+bw:.1f},{ytop+r:.1f} V{floor} Z" fill="{OCHRE}"/>')
+
+    for day, label in MARKERS:
+        if day not in at:
+            continue
+        mx = x(at[day]) - gap / 2
+        o.append(f'  <line x1="{mx:.1f}" y1="{top-30:.0f}" x2="{mx:.1f}" y2="{floor}" '
+                 f'stroke="{PAPER}" stroke-opacity=".38" stroke-width="1.5" stroke-dasharray="5 5"/>')
+        o.append(f'  <text x="{mx+9:.1f}" y="{top-12:.0f}" font-family="Georgia, serif" '
+                 f'font-size="20" fill="{PAPER}" fill-opacity=".72">{label}</text>')
+
+    o.append(f'  <line x1="{left}" y1="{floor}" x2="{right}" y2="{floor}" '
+             f'stroke="{PAPER}" stroke-opacity=".5" stroke-width="2"/>')
+    o.append(f'  <text x="{left}" y="{floor+38:.0f}" font-family="Georgia, serif" '
+             f'font-size="21" fill="{PAPER}" fill-opacity=".62">pull requests merged per day</text>')
+    o.append('</svg>')
+    return "\n".join(o) + "\n"
+
+
+if __name__ == '__main__':
+    ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    ap.add_argument('--repo', default='Axxiss/personal-os')
+    ap.add_argument('--end', metavar='YYYY-MM-DD',
+                    help='last day to plot; without it the final day is drawn as in progress')
+    ap.add_argument('--hero', action='store_true',
+                    help="also write the post's 1200x630 card, and render it to PNG")
+    args = ap.parse_args()
+
+    days = series(fetch(args.repo), args.end)
+    OUT.parent.mkdir(parents=True, exist_ok=True)
+    OUT.write_text(render(days, partial_last=args.end is None))
+    print(f"{len(days)} days, {sum(v for _, v in days)} merges → {OUT}")
+
+    if args.hero:
+        HERO_SVG.parent.mkdir(parents=True, exist_ok=True)
+        HERO_SVG.write_text(hero(days, "Writing myself out of the loop"))
+        print(f"→ {HERO_SVG}")
+        # The PNG is what the meta tags point at: no crawler renders SVG for a
+        # social card, and the layout authors the box at 1200x630.
+        if subprocess.run(['which', 'rsvg-convert'], capture_output=True).returncode:
+            sys.exit("rsvg-convert not found (brew install librsvg); SVG written, PNG skipped")
+        subprocess.run(['rsvg-convert', '-w', '1200', '-h', '630',
+                        '-o', str(HERO_PNG), str(HERO_SVG)], check=True)
+        print(f"→ {HERO_PNG}")
